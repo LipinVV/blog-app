@@ -27,7 +27,7 @@ export const User = () => {
     const [numberOfPosts, setNumberOfPosts] = useState(3);
 
     const posts = state.posts.slice(0, numberOfPosts);
-    console.log(currentUser)
+    console.log(posts)
     if (!currentUser) return <div>Loading user....</div>
 
     return (
@@ -62,9 +62,9 @@ export const User = () => {
                 })}
             </div>
             {numberOfPosts === 3 ?
-                <button className='user__button-show-all' type='button' onClick={() => setNumberOfPosts(state.posts.length)}>show all</button>
+                <button className='user__button-show-all' type='button' onClick={() => setNumberOfPosts(state.posts.length)}>Show all</button>
                 :
-                <button className='user__button-hide-all' type='button' onClick={() => setNumberOfPosts(3)}>hide all</button>
+                <button className='user__button-hide-all' type='button' onClick={() => setNumberOfPosts(3)}>Hide all</button>
             }
         </div>
     )

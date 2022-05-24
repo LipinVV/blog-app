@@ -1,10 +1,10 @@
 import {useState} from 'react';
-import './post.scss';
 import {ACTION} from "../../actions";
 import {useContext} from "react";
 import {StoreContext} from "../../store";
 import {Link} from "react-router-dom";
 import {PostType} from "../../types";
+import './post.scss';
 
 export const Post = ({body, title, id, postId, userName}: PostType) => {
     const { dispatch } = useContext(StoreContext);
@@ -26,7 +26,7 @@ export const Post = ({body, title, id, postId, userName}: PostType) => {
             <p className='post__text'>{body.slice(0, showingText)}</p>
             {showingText === valueToSliceTheText ? <button className='post__button-open' onClick={() => setShowingText(body.length)}>show more...</button>
                 :
-                <button className='post__button-close'  onClick={() => setShowingText(valueToSliceTheText)}>close</button>
+                <button className='post__button-close'  onClick={() => setShowingText(valueToSliceTheText)}>Close</button>
             }
             <Link
                 className='post__link'

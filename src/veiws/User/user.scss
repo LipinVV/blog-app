@@ -63,6 +63,11 @@
 .user__button-hide-all {
   display: flex;
 
+  &:hover {
+    background-color: $font-green;
+    color: $font-white;
+  }
+
   @media screen and (min-width: $desktopDevice) {
     min-width: 150px;
     justify-content: center;

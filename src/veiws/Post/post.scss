@@ -31,6 +31,11 @@
   display: flex;
   background: radial-gradient(150% 50% at 50% 60%, red 50%, rgba(0, 0, 0, 0) 100%);
 
+  &:hover {
+    background: radial-gradient(150% 50% at 50% 60%, $font-green 50%, rgba(0, 0, 0, 0) 100%);
+    color: $font-white;
+  }
+
   @media screen and (min-width: $desktopDevice) {
     min-width: 100px;
     justify-content: center;
@@ -48,7 +53,7 @@
 }
 
 .post__button-close {
-  background: #06b25a;
+  background: $font-green;
   @media screen and (min-width: $desktopDevice) {
     transform: translateY(0);
   }
@@ -63,6 +68,10 @@
   border-radius: 10px;
   padding: 5px 10px;
   justify-self: center;
+
+  &:hover {
+    background-color: $font-green;
+  }
 
   @media screen and (min-width: $desktopDevice) {
     max-width: 120px;
