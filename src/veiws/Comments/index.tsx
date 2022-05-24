@@ -1,14 +1,23 @@
 import {useState} from 'react';
-import {useContext} from "react";
-import {StoreContext} from "../../store";
 import {Comment} from "../Comment";
 import {useParams} from "react-router";
-import {ACTION} from "../../actions";
+import {useDispatch, useSelector} from "react-redux";
+import {AppDispatch} from "../../store";
+import {CommentType, PostType, StateType} from "../../types";
+import {postUserComment} from "../../reducers/usersSlice";
 import './comments.scss';
 
 export const Comments = () => {
-    const {state, dispatch} = useContext(StoreContext);
-    const comments = state.comments;
+    const dispatch = useDispatch<AppDispatch>();
+
+    const commentList = useSelector((state: StateType) => {
+        return state.comments;
+    });
+
+    const postsList = useSelector((state: StateType) => {
+        return state.posts;
+    });
+
     const {postId} = useParams();
     const {id} = useParams();
 
@@ -19,37 +28,12 @@ export const Comments = () => {
         text: ''
     });
 
+    const currentPost = postsList.filter((post: PostType) => post.id === Number(postId));
 
-    const postUserComment = async () => {
-        try {
-            await fetch('https://jsonplaceholder.typicode.com/comments', {
-                method: 'POST',
-                body: JSON.stringify({
-                    postId: postId,
-                    title: newComment.name,
-                    body: newComment.text,
-                    userId: id,
-                    email: newComment.email
-                }),
-                headers: {
-                    'Content-type': 'application/json; charset=UTF-8',
-                },
-            })
-                .then((response) => response.json())
-                .then(data =>{
-                    dispatch({action: ACTION.UPDATE_POST_COMMENTS, data: [...comments, data]})
-                });
-        } catch (error) {
-            console.error(error);
-        }
-    }
 
-    const currentPost = state.posts.filter(post => post.id === Number(postId));
-
-    console.log(currentPost)
     return (
         <div className='comments'>
-            {comments.map(comment => {
+            {commentList.map((comment: CommentType) => {
                 return (
                     <Comment key={comment.id} id={comment.id} name={comment.name} email={comment.email}
                              body={comment.body}/>
@@ -84,7 +68,15 @@ export const Comments = () => {
                         type='button'
                         onClick={() => {
                             setSendStatus(!sendStatus);
-                            postUserComment();
+                            // postUserComment();
+                            dispatch(postUserComment({
+                                id: Number(id), postId: Number(postId), newComment: {
+                                    id: Number(id),
+                                    name: newComment.name,
+                                    email: newComment.email,
+                                    body: newComment.text
+                                }
+                            }));
                         }}>Send
                     </button>
                 </div>

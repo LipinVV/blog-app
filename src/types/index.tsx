@@ -1,5 +1,3 @@
-import {ACTION} from "../actions";
-
 export type UserType = {
     id: number,
     name: string,
@@ -44,5 +42,3 @@ export type StateType = {
     posts: PostType[],
     comments: CommentType[],
 }
-
-export type ActionType = { action: ACTION, data: any}

@@ -1,32 +1,33 @@
-import {useContext, useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {useParams} from "react-router";
-import {StoreContext} from "../../store";
-import {ACTION} from "../../actions";
 import {Post} from "../Post";
+import {PostType, StateType, UserType} from "../../types";
+import {useDispatch, useSelector} from "react-redux";
+import {AppDispatch} from "../../store";
+import {fetchUserPost} from "../../reducers/usersSlice";
 import './user.scss';
 
 export const User = () => {
     const {id} = useParams();
-    const {state, dispatch} = useContext(StoreContext);
-    const currentUser = state.users.find(user => user.id === Number(id));
+    const dispatch = useDispatch<AppDispatch>();
 
-    const fetchUserPost = async () => {
-        try {
-            await fetch(`https://jsonplaceholder.typicode.com/posts?userId=${id}`)
-                .then((response) => response.json())
-                .then((data) => dispatch({action: ACTION.LOAD_USER_POST, data: data}));
-        } catch (error) {
-            console.error(error);
-        }
-    }
+    const userList = useSelector((state: StateType) => {
+        return state.users;
+    });
+
+    const postLists = useSelector((state: StateType) => {
+        return state.posts;
+    });
+
+    const currentUser = userList.find((user: UserType) => user.id === Number(id));
 
     useEffect(() => {
-        currentUser && fetchUserPost();
-    }, [currentUser]);
+        currentUser && dispatch(fetchUserPost(Number(id)));
+    }, [currentUser, dispatch, id]);
 
     const [numberOfPosts, setNumberOfPosts] = useState(3);
 
-    const posts = state.posts.slice(0, numberOfPosts);
+    const posts = postLists.slice(0, numberOfPosts);
     console.log(posts)
     if (!currentUser) return <div>Loading user....</div>
 
@@ -52,7 +53,7 @@ export const User = () => {
             </table>
             <div className='user__posts'>
                 <h4 className='user__posts-header'>Posts</h4>
-                {posts.map(post => {
+                {posts.map((post: PostType) => {
                     return <Post
                         userName={currentUser.username}
                         id={Number(id)} title={post.title}
@@ -62,7 +63,7 @@ export const User = () => {
                 })}
             </div>
             {numberOfPosts === 3 ?
-                <button className='user__button-show-all' type='button' onClick={() => setNumberOfPosts(state.posts.length)}>Show all</button>
+                <button className='user__button-show-all' type='button' onClick={() => setNumberOfPosts(postLists.length)}>Show all</button>
                 :
                 <button className='user__button-hide-all' type='button' onClick={() => setNumberOfPosts(3)}>Hide all</button>
             }

@@ -1,36 +1,28 @@
-import {useContext, useEffect} from 'react';
-import {StoreContext} from "../../store";
-import {ACTION} from "../../actions";
+import React, {useEffect} from 'react';
 import {Link} from "react-router-dom";
-import {UserType} from "../../types";
-import {useLocation} from "react-router";
+import {StateType, UserType} from "../../types";
+import {useDispatch, useSelector} from "react-redux";
+import {fetchUsers} from "../../reducers/usersSlice";
+import {AppDispatch} from "../../store";
 import './users.scss';
 
+export const Users: React.FC = () => {
+    const dispatch = useDispatch<AppDispatch>();
 
-export const Users = () => {
-    const { state, dispatch } = useContext(StoreContext);
-    const location = useLocation();
-
-    const fetchUsers = async () => {
-        try {
-            await fetch('https://jsonplaceholder.typicode.com/users')
-                .then((response) => response.json())
-                .then((data) => dispatch({action: ACTION.LOAD_USERS, data: data}));
-        } catch (error) {
-            console.error(error);
-        }
-    }
+    const userList = useSelector((state: StateType) => {
+        return state.users;
+    });
 
     useEffect(() => {
-        fetchUsers();
-    }, []);
+        dispatch(fetchUsers());
+    }, [dispatch]);
 
-    if(!state.users.length) return <div>Loading users</div>
+    if(!userList.length) return <div>Loading users</div>
 
     return (
         <div className='users'>
             <h1 className='users__header'>They've bought tickets:</h1>
-            {state.users.map((user: UserType) => {
+            {userList.map((user: UserType) => {
                 return (
                     <div className='users__user-card' key={user.id}>
                         <span className='users__user-card-name'>{user.username}</span>

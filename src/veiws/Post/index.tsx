@@ -1,22 +1,14 @@
 import {useState} from 'react';
-import {ACTION} from "../../actions";
-import {useContext} from "react";
-import {StoreContext} from "../../store";
 import {Link} from "react-router-dom";
 import {PostType} from "../../types";
+import {fetchPostComments} from "../../reducers/usersSlice";
+import {useDispatch} from "react-redux";
+import {AppDispatch} from "../../store";
 import './post.scss';
 
 export const Post = ({body, title, id, postId, userName}: PostType) => {
-    const { dispatch } = useContext(StoreContext);
-    const fetchPostComments = async (currentId: number) => {
-        try {
-            await fetch(`https://jsonplaceholder.typicode.com/comments?postId=${currentId}`)
-                .then((response) => response.json())
-                .then((data) => dispatch({action: ACTION.LOAD_POST_COMMENTS, data: data}));
-        } catch (error) {
-            console.error(error);
-        }
-    }
+    const dispatch = useDispatch<AppDispatch>();
+
     const valueToSliceTheText = 32;
     const [showingText, setShowingText] = useState(valueToSliceTheText);
 
@@ -30,7 +22,7 @@ export const Post = ({body, title, id, postId, userName}: PostType) => {
             }
             <Link
                 className='post__link'
-                onClick={() => fetchPostComments(postId)}
+                onClick={() => dispatch(fetchPostComments(postId))}
                 to={`/users/${userName}/${id}/${postId}/comments`}>Show comments
             </Link>
         </div>
