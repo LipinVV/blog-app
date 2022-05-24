@@ -25,15 +25,12 @@ export const Users = () => {
         fetchUsers();
     }, []);
 
-    const numberOfUsersToSlice = 4;
-    const usersToRender = location.pathname === '/' ? state.users.slice(0, numberOfUsersToSlice) : state.users;
-
     if(!state.users.length) return <div>Loading users</div>
 
     return (
         <div className='users'>
             <h1 className='users__header'>They've bought tickets:</h1>
-            {usersToRender.map((user: UserType) => {
+            {state.users.map((user: UserType) => {
                 return (
                     <div className='users__user-card' key={user.id}>
                         <span className='users__user-card-name'>{user.username}</span>

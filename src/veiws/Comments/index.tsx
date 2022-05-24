@@ -44,7 +44,9 @@ export const Comments = () => {
         }
     }
 
+    const currentPost = state.posts.filter(post => post.id === Number(postId));
 
+    console.log(currentPost)
     return (
         <div className='comments'>
             {comments.map(comment => {
