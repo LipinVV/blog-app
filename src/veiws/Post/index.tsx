@@ -17,16 +17,16 @@ export const Post = ({body, title, id, postId, userName}: PostType) => {
             console.error(error);
         }
     }
-
-    const [showingText, setShowingText] = useState(35);
+    const valueToSliceTheText = 32;
+    const [showingText, setShowingText] = useState(valueToSliceTheText);
 
     return (
         <div className='post'>
-            <h4>{title}</h4>
-            <span>{body.slice(0, showingText)}</span>
-            {showingText === 35 ? <button onClick={() => setShowingText(body.length)}>open</button>
+            <h5 className='post__header'>{title}</h5>
+            <p className='post__text'>{body.slice(0, showingText)}</p>
+            {showingText === valueToSliceTheText ? <button className='post__button-open' onClick={() => setShowingText(body.length)}>show more...</button>
                 :
-                <button onClick={() => setShowingText(35)}>close</button>
+                <button className='post__button-close'  onClick={() => setShowingText(valueToSliceTheText)}>close</button>
             }
             <Link
                 className='post__link'
