@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import {useContext, useEffect, useState} from 'react';
 import {useParams} from "react-router";
 import {StoreContext} from "../../store";
 import {ACTION} from "../../actions";

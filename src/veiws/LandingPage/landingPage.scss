@@ -1,5 +1,35 @@
 @import "src/index";
 
-.landing-page {
+.landing-page__main-section {
+  position: relative;
+  background: url("../../../public/main-bg.png") $font-black center;
+  background-size: cover;
 
+  @media screen and (min-width: $desktopDevice) {
+    min-height: 509px;
+  }
+}
+
+.landing-page__main-section-header,
+.landing-page__main-section-sub-header {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: $font-white;
+  margin: 0;
+  background: radial-gradient(150% 50% at 50% 60%, #000000 50%, rgba(0, 0, 0, 0) 100%);
+
+  @media screen and (min-width: $desktopDevice) {
+    font-size: 50px;
+    font-weight: 700;
+  }
+}
+
+.landing-page__main-section-sub-header {
+  top: 60%;
+  @media screen and (min-width: $desktopDevice) {
+    font-size: 30px;
+    font-weight: 700;
+  }
 }

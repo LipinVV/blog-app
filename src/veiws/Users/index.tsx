@@ -1,10 +1,10 @@
-import React, {useContext, useEffect} from 'react';
+import {useContext, useEffect} from 'react';
 import {StoreContext} from "../../store";
 import {ACTION} from "../../actions";
 import {Link} from "react-router-dom";
 import {UserType} from "../../types";
-import './users.scss';
 import {useLocation} from "react-router";
+import './users.scss';
 
 
 export const Users = () => {

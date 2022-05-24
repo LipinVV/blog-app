@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import {useContext} from "react";
 import {StoreContext} from "../../store";
 import {Comment} from "../Comment";

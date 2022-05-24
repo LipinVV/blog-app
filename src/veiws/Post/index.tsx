@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import './post.scss';
 import {ACTION} from "../../actions";
 import {useContext} from "react";
