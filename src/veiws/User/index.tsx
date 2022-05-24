@@ -1,21 +1,22 @@
 import {useEffect, useState} from 'react';
 import {useParams} from "react-router";
-import {Post} from "../Post";
 import {PostType, StateType, UserType} from "../../types";
-import {useDispatch, useSelector} from "react-redux";
+import {useAppSelector} from "../../hook";
+import {useDispatch} from "react-redux";
 import {AppDispatch} from "../../store";
 import {fetchUserPost} from "../../reducers/usersSlice";
+import {Post} from "../Post";
 import './user.scss';
 
 export const User = () => {
     const {id} = useParams();
     const dispatch = useDispatch<AppDispatch>();
 
-    const userList = useSelector((state: StateType) => {
+    const userList = useAppSelector((state: StateType) => {
         return state.users;
     });
 
-    const postLists = useSelector((state: StateType) => {
+    const postLists = useAppSelector((state: StateType) => {
         return state.posts;
     });
 
@@ -28,7 +29,7 @@ export const User = () => {
     const [numberOfPosts, setNumberOfPosts] = useState(3);
 
     const posts = postLists.slice(0, numberOfPosts);
-    console.log(posts)
+
     if (!currentUser) return <div>Loading user....</div>
 
     return (

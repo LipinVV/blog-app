@@ -1,20 +1,21 @@
 import {useState} from 'react';
-import {Comment} from "../Comment";
 import {useParams} from "react-router";
-import {useDispatch, useSelector} from "react-redux";
-import {AppDispatch} from "../../store";
+import {useDispatch} from "react-redux";
 import {CommentType, PostType, StateType} from "../../types";
+import {AppDispatch} from "../../store";
+import {useAppSelector} from "../../hook";
+import {Comment} from "../Comment";
 import {postUserComment} from "../../reducers/usersSlice";
 import './comments.scss';
 
 export const Comments = () => {
     const dispatch = useDispatch<AppDispatch>();
 
-    const commentList = useSelector((state: StateType) => {
+    const commentList = useAppSelector((state: StateType) => {
         return state.comments;
     });
 
-    const postsList = useSelector((state: StateType) => {
+    const postsList = useAppSelector((state: StateType) => {
         return state.posts;
     });
 

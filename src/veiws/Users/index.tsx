@@ -1,7 +1,8 @@
 import React, {useEffect} from 'react';
 import {Link} from "react-router-dom";
+import {useDispatch} from "react-redux";
 import {StateType, UserType} from "../../types";
-import {useDispatch, useSelector} from "react-redux";
+import {useAppSelector} from "../../hook";
 import {fetchUsers} from "../../reducers/usersSlice";
 import {AppDispatch} from "../../store";
 import './users.scss';
@@ -9,7 +10,7 @@ import './users.scss';
 export const Users: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
 
-    const userList = useSelector((state: StateType) => {
+    const userList = useAppSelector((state: StateType) => {
         return state.users;
     });
 

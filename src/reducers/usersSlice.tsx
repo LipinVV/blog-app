@@ -32,7 +32,6 @@ export const fetchUserPost = createAsyncThunk<PostType[], number, { rejectValue:
 export const fetchPostComments = createAsyncThunk<CommentType[], number, { rejectValue: string }>(
     'users/fetchPostComments',
     async (currentId, {rejectWithValue}) => {
-        console.log('currentId', currentId)
         const response = await fetch(`https://jsonplaceholder.typicode.com/comments?postId=${currentId}`);
         if (!response.ok) {
             return rejectWithValue('Server error');
