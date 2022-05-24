@@ -4,6 +4,17 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-gap: 13px;
+
+  @media screen and (min-width: $desktopDevice) {
+    padding: 0 60px;
+  }
+
+}
+
+.users__header {
+  display: grid;
+  grid-column: 1/-1;
+  margin-top: 30px;
 }
 
 .users__link {
