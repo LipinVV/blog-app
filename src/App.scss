@@ -1,0 +1,17 @@
+@import "index";
+
+.App {
+  margin: 0 auto;
+  @media screen and (min-width: $mobileDevice) {
+    max-width: $mobileDevice;
+    padding: 20px;
+  }
+
+  @media screen and (min-width: $tabletDevice) {
+    max-width: $tabletDevice;
+  }
+
+  @media screen and (min-width: $desktopDevice) {
+    max-width: $desktopDevice;
+  }
+}
