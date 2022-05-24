@@ -27,21 +27,31 @@ export const User = () => {
     const [numberOfPosts, setNumberOfPosts] = useState(3);
 
     const posts = state.posts.slice(0, numberOfPosts);
-
+    console.log(currentUser)
     if (!currentUser) return <div>Loading user....</div>
 
     return (
         <div className='user'>
-            <div className='user__personal-information'>
-                <div>{currentUser.id}</div>
-                <span>{currentUser.name}</span>
-                <span>{currentUser.email}</span>
-                <span>{currentUser.phone}</span>
-                <span>{currentUser.website}</span>
-                <span>{currentUser.company.name}</span>
-                <span>{currentUser.company.bs}</span>
-            </div>
+            <table className='user__personal-information'>
+                <tbody>
+                <tr>
+                    <td className='user__personal-empty-cell'></td>
+                    <td className='user__personal-information-name' colSpan={5}>{currentUser.name}</td>
+                    <td className='user__personal-empty-cell'></td>
+                </tr>
+                <tr>
+                    <td className='user__personal-empty-cell'></td>
+                    <td className='user__personal-information-cell'>{currentUser.email}</td>
+                    <td className='user__personal-information-cell'>{currentUser.phone}</td>
+                    <td className='user__personal-information-cell'>{currentUser.website}</td>
+                    <td className='user__personal-information-cell'>{currentUser.company.name}</td>
+                    <td className='user__personal-information-cell'>{currentUser.company.bs}</td>
+                    <td className='user__personal-empty-cell'></td>
+                </tr>
+                </tbody>
+            </table>
             <div className='user__posts'>
+                <h4 className='user__posts-header'>Posts</h4>
                 {posts.map(post => {
                     return <Post
                         userName={currentUser.username}
@@ -52,9 +62,9 @@ export const User = () => {
                 })}
             </div>
             {numberOfPosts === 3 ?
-                <button type='button' onClick={() => setNumberOfPosts(state.posts.length)}>show all</button>
+                <button className='user__button-show-all' type='button' onClick={() => setNumberOfPosts(state.posts.length)}>show all</button>
                 :
-                <button type='button' onClick={() => setNumberOfPosts(3)}>hide all</button>
+                <button className='user__button-hide-all' type='button' onClick={() => setNumberOfPosts(3)}>hide all</button>
             }
         </div>
     )

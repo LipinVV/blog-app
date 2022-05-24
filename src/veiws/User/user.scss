@@ -1,10 +1,79 @@
+@import "src/index";
+
 .user {
-  display: flex;
+  display: grid;
   flex-direction: column;
+  grid-gap: 25px;
 }
 
 .user__posts {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
+
+  @media screen and (min-width: $desktopDevice) {
+    padding: 0 53px;
+  }
+}
+
+.user__posts-header {
+  grid-column: 1/-1;
+  margin: 0;
+  font-size: 35px;
+  font-weight: 500;
+}
+
+.user__personal-information {
+  border-collapse: collapse;
+  border: 1px solid $font-black;
+
+  @media screen and (min-width: $desktopDevice) {
+      margin-top: 36px;
+  }
+}
+
+.user__personal-information-cell {
+  border: 1px solid $font-black;
+  @media screen and (min-width: $desktopDevice) {
+    padding: 11px 0 14px 22px;
+    &:nth-of-type(1) {
+      padding-left: 18px;
+    }
+  }
+}
+
+.user__personal-information-name {
+
+  @media screen and (min-width: $desktopDevice) {
+    font-size: 35px;
+    font-weight: 500;
+    line-height: 40px;
+    padding: 11px 0 11px 18px;
+  }
+}
+
+.user__personal-empty-cell {
+  border: 1px solid $font-black;
+  @media screen and (min-width: $desktopDevice) {
+    width: 53px;
+  }
+}
+
+.user__button-show-all,
+.user__button-hide-all {
+  display: flex;
+
+  @media screen and (min-width: $desktopDevice) {
+    min-width: 150px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    font-size: 12px;
+    margin: 0 auto 50px;
+    font-weight: 600;
+  }
+
 }
