@@ -20,7 +20,7 @@ export const Users: React.FC = () => {
 
     return (
         <div className='users'>
-            <h1 className='users__header'>They've bought tickets:</h1>
+            <h1 className='users__header'>Our gorgeous users:</h1>
             {userList.map((user: UserType) => {
                 return (
                     <div className='users__user-card' key={user.id}>

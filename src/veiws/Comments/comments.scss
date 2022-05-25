@@ -1,8 +1,122 @@
+@import "src/index";
+
 .comments {
   display: grid;
-  grid-gap: 20px;
+  grid-gap: 10px;
+  position: relative;
+  font-size: 17px;
+  padding-bottom: 20px;
 }
 
 .comments__form {
   display: grid;
+  grid-gap: 20px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: $font-white;
+  padding: 20px;
+  border: 2px solid $font-black;
+  min-width: 300px;
+  grid-template-columns: 1fr 3fr;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  font-size: 15px;
+
+  &:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+}
+
+.comments__current-post {
+  padding: 20px;
+  border: 1px solid $font-black;
+  display: grid;
+  grid-gap: 20px;
+  margin-top: 20px;
+}
+
+.comments__current-post-section {
+  color: $font-black;
+}
+
+.comments__form-input {
+  min-height: 30px;
+  padding-left: 10px;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid $font-green;
+  grid-column: 2;
+}
+
+.comments__form-text-area {
+  grid-column: 2;
+  min-height: 70px;
+  outline: none;
+  resize: none;
+  padding-left: 10px;
+  border: 1px solid $font-green;
+}
+
+.comments__form-header {
+  text-align: center;
+  font-size: 17px;
+  margin: 15px 0;
+  color: $font-green;
+}
+
+.comments__form-header,
+.comments__form-button {
+  grid-column: 1 / -1;
+}
+
+.comments__form-button {
+  cursor: pointer;
+  padding: 10px;
+  min-width: 150px;
+  justify-self: center;
+  background-color: $font-black;
+  border: none;
+  color: $font-white;
+  font-weight: 700;
+  margin-top: 20px;
+
+  &:disabled {
+    background-color: $font-gray;
+    cursor: not-allowed;
+  }
+
+  &:disabled:hover {
+    background-color: $font-gray;
+  }
+
+  &:hover {
+    background-color: $font-green;
+  }
+}
+
+.comments__add-comment-button {
+  max-width: 150px;
+  display: grid;
+  justify-self: center;
+  padding: 10px 15px;
+  font-size: 15px;
+  cursor: pointer;
+  background-color: $font-black;
+  color: $font-white;
+  border: none;
+
+  &:hover {
+    background-color: $font-green;
+  }
+}
+
+.comments__form-error {
+  font-size: 12px;
+  color: $font-red;
+  font-weight: 600;
+  grid-row: 5;
+  grid-column: 1 / -1;
+  position: absolute;
+  justify-self: center;
 }

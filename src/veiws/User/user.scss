@@ -62,6 +62,7 @@
 .user__button-show-all,
 .user__button-hide-all {
   display: flex;
+  background-color: $font-orange;
 
   &:hover {
     background-color: $font-green;

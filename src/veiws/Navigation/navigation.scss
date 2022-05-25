@@ -7,6 +7,15 @@
 
 .navigation__header {
   text-transform: uppercase;
+  text-decoration: none;
+  color: $font-white;
+  font-size: 28px;
+  font-weight: 700;
+  padding: 20px 0;
+
+  &:hover {
+    color: $font-green;
+  }
 }
 
 .navigation__bar {

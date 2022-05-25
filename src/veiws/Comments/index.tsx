@@ -20,54 +20,103 @@ export const Comments = () => {
     const {postId} = useParams();
     const {id} = useParams();
 
-    const [sendStatus, setSendStatus] = useState(false);
+    const [sendStatus, setSendStatus] = useState<boolean>(false);
     const [newComment, setNewComment] = useState({
         name: '',
         email: '',
         text: ''
     });
 
-    const currentPost = postsList.filter((post: PostType) => post.id === Number(postId));
-
+    const [error, setError] = useState<string>('');
+    const currentPost = postsList.find((post: PostType) => post.id === Number(postId));
+    const formFieldsHandler = (value: string, type: string) => {
+        if(type === 'email') {
+            if (!value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+                setError('email is not valid!');
+            } else {
+                setError('');
+            }
+        }
+        if(type === 'name') {
+            if(value.length < 5) {
+                setError('name is too short!');
+            } else {
+                setError('');
+            }
+        }
+        else {
+            if(value.length < 5) {
+                setError('text is too short!');
+            } else {
+                setError('');
+            }
+        }
+    };
 
     return (
         <div className='comments'>
+            <section className='comments__current-post'>
+                <span className='comments__current-post-section'>Post topic: {currentPost?.title}</span>
+                <span className='comments__current-post-section'>Message: {currentPost?.body}</span>
+            </section>
             {commentList.map((comment: CommentType) => {
                 return (
-                    <Comment key={comment.id} id={comment.id} name={comment.name} email={comment.email}
-                             body={comment.body}/>
+                    <Comment
+                        key={comment.id}
+                        id={comment.id}
+                        name={comment.name}
+                        email={comment.email}
+                        body={comment.body}
+                    />
                 )
             })}
-            {!sendStatus ? <div>
-                    <button type='button' onClick={() => setSendStatus(!sendStatus)}>Add comment</button>
-                </div>
+            {!sendStatus ?
+                <button
+                    className='comments__add-comment-button'
+                    type='button'
+                    onClick={() => setSendStatus(!sendStatus)}>Add comment
+                </button>
                 :
-                <div className='comments__form'>
-                    Form
-                    <label>name
-                        <input
-                            type='text'
-                            value={newComment.name}
-                            onChange={(event) => setNewComment({...newComment, name: event.target.value})}/>
-                    </label>
-                    <label>email
-                        <input
-                            type='text'
-                            value={newComment.email}
-                            onChange={(event) => setNewComment({...newComment, email: event.target.value})}/>
-                    </label>
-                    <label>text
-                        <input
-                            type='text'
-                            value={newComment.text}
-                            onChange={(event) => setNewComment({...newComment, text: event.target.value})}/>
-                    </label>
+                <form className='comments__form'>
+                    <h4 className='comments__form-header'>Post a comment</h4>
+                    <label htmlFor='name' className='comments__form-label'>name</label>
+                    <input
+                        autoFocus
+                        id='name'
+                        className='comments__form-input'
+                        type='text'
+                        value={newComment.name}
+                        onChange={(event) => {
+                            setNewComment({...newComment, name: event.target.value});
+                            formFieldsHandler(event.target.value, 'name');
+                        }}/>
+                    <label htmlFor='text' className='comments__form-label'>email</label>
+                    <input
+                        id='email'
+                        className='comments__form-input'
+                        type='email'
+                        value={newComment.email}
+                        onChange={(event) => {
+                            setNewComment({...newComment, email: event.target.value});
+                            formFieldsHandler(event.target.value, 'email');
+                        }}
+                    />
+                    <label htmlFor='text' className='comments__form-label'>text</label>
+                    <textarea
+                        id='text'
+                        className='comments__form-text-area'
+                        value={newComment.text}
+                        onChange={(event) => {
+                            setNewComment({...newComment, text: event.target.value});
+                            formFieldsHandler(event.target.value, 'text');
+                        }}/>
                     <button
+                        className='comments__form-button'
                         disabled={!newComment.text.length}
-                        type='button'
-                        onClick={() => {
+                        type='submit'
+                        onClick={(event) => {
+                            event.preventDefault();
                             setSendStatus(!sendStatus);
-                            // postUserComment();
                             dispatch(postUserComment({
                                 id: Number(id), postId: Number(postId), newComment: {
                                     id: Number(id),
@@ -78,7 +127,8 @@ export const Comments = () => {
                             }));
                         }}>Send
                     </button>
-                </div>
+                    {error && <span className='comments__form-error'>{error}</span>}
+                </form>
             }
         </div>
     )

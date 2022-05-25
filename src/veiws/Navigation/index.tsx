@@ -6,7 +6,7 @@ export const Navigation = () => {
     return (
         <div className='navigation'>
            <section className='navigation__bar'>
-               <h2 className='navigation__header'>Concert club</h2>
+               <Link  to='/' className='navigation__header'>Free Speak</Link>
                <div className='navigation__links'>
                    <Link to='/' className='navigation__link'>For the visually impaired</Link>
                    <Link to='/' className='navigation__link'>My profile</Link>

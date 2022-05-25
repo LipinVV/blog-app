@@ -51,7 +51,7 @@ export const User = () => {
                 </tbody>
             </table>
             <div className='user__posts'>
-                <h4 className='user__posts-header'>Posts</h4>
+                <h4 className='user__posts-header'>User posts</h4>
                 {posts.map((post: PostType) => {
                     return <Post
                         userName={currentUser.username}

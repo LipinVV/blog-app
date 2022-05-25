@@ -22,7 +22,7 @@ export const Post = ({body, title, id, postId, userName}: PostType) => {
             <Link
                 className='post__link'
                 onClick={() => dispatch(fetchPostComments(postId))}
-                to={`/users/${userName}/${id}/${postId}/comments`}>Show comments
+                to={`/users/${userName}/${id}/${postId}/comments`}>To comments
             </Link>
         </div>
     )
