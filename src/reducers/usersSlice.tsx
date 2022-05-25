@@ -50,7 +50,7 @@ export const postUserComment = createAsyncThunk<CommentType, {postId: number, ne
       method: 'POST',
       body: JSON.stringify({
         postId,
-        title: newComment.name,
+        name: newComment.name,
         body: newComment.body,
         userId: id,
         email: newComment.email,

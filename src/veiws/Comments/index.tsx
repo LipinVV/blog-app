@@ -134,6 +134,7 @@ export const Comments: FC = () => {
                     body: newComment.text,
                   },
                 }));
+                setNewComment({ name: '', email: '', text: '' });
               }}
             >
               Send
