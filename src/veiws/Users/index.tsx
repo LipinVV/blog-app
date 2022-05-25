@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import {StateType, UserType} from "../../types";
 import {useAppDispatch, useAppSelector} from "../../hooks/hooks";
 import {fetchUsers} from "../../reducers/usersSlice";
-import {Pagination} from "../Pagination";
+import {Pagination} from "../../components/Pagination";
 import './users.scss';
 
 export const Users: FC = () => {

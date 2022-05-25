@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom/client';
 import {BrowserRouter} from "react-router-dom";
 import {Provider} from 'react-redux';
 import {store} from "./store";
-import {LoadingPage} from "./veiws/LoadingPage";
+import {LoadingPage} from "./components/LoadingPage";
 import './index.scss';
 
-const App = lazy(() => import('./App'));
+const App = lazy(() => import('./components/App/App'));
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

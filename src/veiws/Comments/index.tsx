@@ -2,7 +2,7 @@ import {FC, useState} from 'react';
 import {useParams} from "react-router";
 import {CommentType, PostType, StateType} from "../../types";
 import {useAppDispatch, useAppSelector} from "../../hooks/hooks";
-import {Comment} from "../Comment";
+import {Comment} from "../../components/Comment";
 import {postUserComment} from "../../reducers/usersSlice";
 import './comments.scss';
 

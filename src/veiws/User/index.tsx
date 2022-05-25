@@ -3,7 +3,7 @@ import {useParams} from "react-router";
 import {PostType, StateType, UserType} from "../../types";
 import {useAppDispatch, useAppSelector} from "../../hooks/hooks";
 import {fetchUserPost} from "../../reducers/usersSlice";
-import {Post} from "../Post";
+import {Post} from "../../components/Post";
 import './user.scss';
 
 export const User: FC = () => {
