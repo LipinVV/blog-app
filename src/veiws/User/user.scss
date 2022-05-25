@@ -70,8 +70,9 @@ $font-orange: #f44d42;
 
 .user__button-show-all,
 .user__button-hide-all {
-  display: flex;
+  display: grid;
   background-color: $font-orange;
+  grid-column: 1 / -1;
 
   &:hover {
     background-color: $font-green;
