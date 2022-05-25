@@ -8,7 +8,7 @@ import './post.scss';
 export const Post = ({body, title, id, postId, userName}: PostType) => {
     const dispatch = useAppDispatch();
 
-    const valueToSliceTheText = 32;
+    const valueToSliceTheText = 50;
     const [showingText, setShowingText] = useState(valueToSliceTheText);
 
     return (
