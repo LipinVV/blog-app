@@ -2,12 +2,11 @@ import {useState} from 'react';
 import {Link} from "react-router-dom";
 import {PostType} from "../../types";
 import {fetchPostComments} from "../../reducers/usersSlice";
-import {useDispatch} from "react-redux";
-import {AppDispatch} from "../../store";
+import {useAppDispatch} from "../../hooks/hooks";
 import './post.scss';
 
 export const Post = ({body, title, id, postId, userName}: PostType) => {
-    const dispatch = useDispatch<AppDispatch>();
+    const dispatch = useAppDispatch();
 
     const valueToSliceTheText = 32;
     const [showingText, setShowingText] = useState(valueToSliceTheText);
