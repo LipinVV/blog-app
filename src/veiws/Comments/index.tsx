@@ -44,7 +44,7 @@ export const Comments = () => {
                 setError('');
             }
         }
-        else {
+        if(type === 'text') {
             if(value.length < 5) {
                 setError('text is too short!');
             } else {
@@ -112,7 +112,7 @@ export const Comments = () => {
                         }}/>
                     <button
                         className='comments__form-button'
-                        disabled={!newComment.text.length}
+                        disabled={!newComment.text.length || !newComment.name.length || !newComment.email.length || error.length > 0}
                         type='submit'
                         onClick={(event) => {
                             event.preventDefault();
