@@ -1,4 +1,10 @@
-@import "src/index";
+$mobileDevice: 320px;
+$tabletDevice: 660px;
+$desktopDevice: 1024px;
+
+$font-black: #000000;
+$font-white: #FFFFFF;
+$font-gray: rgba(0, 0, 0, 0.41);
 
 .users {
   display: grid;
