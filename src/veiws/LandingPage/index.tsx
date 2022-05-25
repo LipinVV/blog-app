@@ -1,7 +1,8 @@
+import {FC} from "react";
 import './landingPage.scss';
 import {Users} from "../Users";
 
-export const LandingPage = () => {
+export const LandingPage: FC = () => {
 
     return (
         <div className='landing-page'>

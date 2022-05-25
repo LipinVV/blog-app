@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {FC, useState} from 'react';
 import {useParams} from "react-router";
 import {CommentType, PostType, StateType} from "../../types";
 import {useAppDispatch, useAppSelector} from "../../hooks/hooks";
@@ -6,7 +6,7 @@ import {Comment} from "../Comment";
 import {postUserComment} from "../../reducers/usersSlice";
 import './comments.scss';
 
-export const Comments = () => {
+export const Comments: FC = () => {
     const dispatch = useAppDispatch();
 
     const commentList = useAppSelector((state: StateType) => {
@@ -31,7 +31,7 @@ export const Comments = () => {
     const currentPost = postsList.find((post: PostType) => post.id === Number(postId));
     const formFieldsHandler = (value: string, type: string) => {
         if(type === 'email') {
-            if (!value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+            if (!value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
                 setError('email is not valid!');
             } else {
                 setError('');
@@ -56,8 +56,12 @@ export const Comments = () => {
     return (
         <div className='comments'>
             <section className='comments__current-post'>
-                <span className='comments__current-post-section'>Post topic: {currentPost?.title}</span>
-                <span className='comments__current-post-section'>Message: {currentPost?.body}</span>
+                <span className='comments__current-post-section'>Post topic:
+                    <span className='comments__current-post-section-normal'>{currentPost?.title}</span>
+                </span>
+                <span className='comments__current-post-section'>Message:
+                   <span className='comments__current-post-section-normal'>{currentPost?.body}</span>
+                </span>
             </section>
             {commentList.map((comment: CommentType) => {
                 return (

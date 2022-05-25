@@ -1,0 +1,65 @@
+@import "src/index";
+
+.pagination {
+  display: grid;
+  justify-self: center;
+  grid-column: 1 / -1;
+}
+
+.pagination__current-page {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.pagination__control-buttons {
+  width: 100%;
+  display: grid;
+  margin-bottom: 10px;
+  justify-content: center;
+  grid-gap: 10px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.pagination__control-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 7px;
+  cursor: pointer;
+  border: none;
+  background-color: $font-black;
+  color: $font-white;
+
+  &:hover {
+    background-color: $font-orange;
+    color: $font-black;
+  }
+
+  &:disabled {
+    background-color: $font-gray;
+    color: $font-black;
+    cursor: not-allowed;
+
+    &:hover {
+      background-color: $font-gray;
+    }
+  }
+
+  &:active {
+    background-color: $font-green;
+  }
+
+  @media screen and (min-width: $mobileDevice) {
+    height: 25px;
+    width: 100px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  @media screen and (min-width: $tabletDevice) {
+    height: 25px;
+    width: 120px;
+    font-size: 14px;
+    padding: 15px 20px;
+  }
+}

@@ -37,7 +37,13 @@
 }
 
 .comments__current-post-section {
+  color: $font-orange;
+  font-weight: 700;
+}
+
+.comments__current-post-section-normal {
   color: $font-black;
+  padding-left: 5px;
 }
 
 .comments__form-input {

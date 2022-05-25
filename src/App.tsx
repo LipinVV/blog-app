@@ -4,6 +4,7 @@ import {Users} from "./veiws/Users";
 import {User} from "./veiws/User";
 import {Route, Routes} from "react-router";
 import {Navigation} from "./veiws/Navigation";
+import {NoMatchPage} from "./veiws/NoMatchPage";
 import './App.scss';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
                 <Route path='/users' element={<Users />}/>
                 <Route path='/users/:user/:id' element={<User />}/>
                 <Route path='/users/:user/:id/:postId/comments' element={<Comments />}/>
+                <Route path="*" element={<NoMatchPage/>}/>
             </Routes>
         </div>
     );

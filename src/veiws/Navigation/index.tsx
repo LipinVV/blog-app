@@ -1,7 +1,8 @@
+import {FC} from "react";
 import {Link} from "react-router-dom";
 import './navigation.scss';
 
-export const Navigation = () => {
+export const Navigation: FC = () => {
 
     return (
         <div className='navigation'>

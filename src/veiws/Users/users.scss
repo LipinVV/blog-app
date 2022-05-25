@@ -6,7 +6,7 @@
   grid-gap: 13px;
 
   @media screen and (min-width: $desktopDevice) {
-    padding: 0 60px 50px 60px;
+    padding: 0 60px;
   }
 
 }
@@ -14,7 +14,7 @@
 .users__header {
   display: grid;
   grid-column: 1/-1;
-  margin-top: 30px;
+  margin: 10px 0;
 }
 
 .users__link {

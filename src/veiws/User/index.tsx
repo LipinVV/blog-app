@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {FC, useEffect, useState} from 'react';
 import {useParams} from "react-router";
 import {PostType, StateType, UserType} from "../../types";
 import {useAppDispatch, useAppSelector} from "../../hooks/hooks";
@@ -6,7 +6,7 @@ import {fetchUserPost} from "../../reducers/usersSlice";
 import {Post} from "../Post";
 import './user.scss';
 
-export const User = () => {
+export const User: FC = () => {
     const {id} = useParams();
     const dispatch = useAppDispatch();
 
