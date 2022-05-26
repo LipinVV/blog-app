@@ -21,7 +21,7 @@
 .navigation__header {
   text-transform: uppercase;
   text-decoration: none;
-  color: $font-white;
+  color: $white;
   font-size: 28px;
   font-weight: 700;
 
@@ -44,13 +44,13 @@
   }
 
   &:hover {
-    color: $font-green;
+    color: $green;
   }
 }
 
 .navigation__bar {
-  background-color: $font-black;
-  color: $font-white;
+  background-color: $black;
+  color: $white;
   display: flex;
   justify-content: space-between;
   width: 100%;

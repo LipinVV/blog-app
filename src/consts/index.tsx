@@ -3,4 +3,6 @@ export const appConsts = {
   maxStrokeLength: 5,
   currentPosts: 3,
   pageSize: 8,
+  onPageMinimumLimit: 3,
+  onPageMaximumLimit: 10,
 };

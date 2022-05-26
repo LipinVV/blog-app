@@ -43,7 +43,7 @@
 .posts__button-show-all,
 .posts__button-hide-all {
   display: grid;
-  background-color: $font-orange;
+  background-color: $orange;
   grid-column: 1 / -1;
   justify-content: center;
   align-items: center;
@@ -53,8 +53,8 @@
   font-weight: 600;
 
   &:hover {
-    background-color: $font-green;
-    color: $font-white;
+    background-color: $green;
+    color: $white;
   }
 
   @media screen and (min-width: $mobileDevice) {

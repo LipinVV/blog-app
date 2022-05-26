@@ -10,7 +10,7 @@ import './posts.scss';
 
 export const Posts = ({ username }: UserType) => {
   const { id } = useParams();
-  const { currentPosts } = appConsts;
+  const { currentPosts, onPageMaximumLimit, onPageMinimumLimit } = appConsts;
   const postLists = useAppSelector(getPosts);
   const dispatch = useAppDispatch();
   const [numberOfPosts, setNumberOfPosts] = useState(currentPosts);
@@ -39,7 +39,7 @@ export const Posts = ({ username }: UserType) => {
             className="posts__button-show-all"
             type="button"
             onClick={() => {
-              dispatch(fetchUserPosts({ id: Number(id), limit: 10 }));
+              dispatch(fetchUserPosts({ id: Number(id), limit: onPageMaximumLimit }));
             }}
           >
             Show all
@@ -50,7 +50,7 @@ export const Posts = ({ username }: UserType) => {
             className="posts__button-hide-all"
             type="button"
             onClick={() => {
-              dispatch(fetchUserPosts({ id: Number(id), limit: 3 }));
+              dispatch(fetchUserPosts({ id: Number(id), limit: onPageMinimumLimit }));
             }}
           >
             Hide all

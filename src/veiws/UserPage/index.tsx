@@ -6,20 +6,21 @@ import { UserType } from '../../types';
 import { fetchUserPosts } from '../../reducers/usersSlice';
 import { Posts } from '../Posts';
 import { getUsers } from '../../selectors';
+import { appConsts } from '../../consts';
 import './userPage.scss';
 
 export const UserPage = () => {
   const { id } = useParams();
   const dispatch = useAppDispatch();
   const userList = useAppSelector(getUsers);
-  const limit = 3;
+  const { onPageMinimumLimit } = appConsts;
   const currentUser = useMemo(() => userList.find((user: UserType) => user.id === Number(id)), [id]);
 
   useEffect(() => {
     if (currentUser) {
-      dispatch(fetchUserPosts({ id: Number(id), limit }));
+      dispatch(fetchUserPosts({ id: Number(id), limit: onPageMinimumLimit }));
     }
-  }, [currentUser, id, limit]);
+  }, [currentUser, id, onPageMinimumLimit]);
 
   if (!currentUser) return <div>Loading user....</div>;
 

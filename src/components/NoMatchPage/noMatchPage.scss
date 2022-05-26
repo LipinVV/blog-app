@@ -5,20 +5,20 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: $font-red;
+  color: $red;
   padding: 10px;
 }
 
 .no-match-page__link {
   text-decoration: none;
-  color: $font-black;
+  color: $black;
   font-size: 17px;
   font-weight: 600;
   padding: 10px;
-  border: 2px solid $font-black;
+  border: 2px solid $black;
   border-radius: 10px;
 
   &:hover {
-    background-color: $font-green;
+    background-color: $green;
   }
 }

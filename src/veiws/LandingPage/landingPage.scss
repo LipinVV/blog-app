@@ -2,7 +2,7 @@
 
 .landing-page__main-section {
   position: relative;
-  background: url("../../../public/main-bg.png") $font-black center;
+  background: url("../../../public/main-bg.png") $black center;
   background-size: cover;
 
   @media screen and (min-width: $mobileDevice) {
@@ -24,7 +24,7 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  color: $font-white;
+  color: $white;
   margin: 0;
   background: radial-gradient(150% 50% at 50% 60%, #000000 50%, rgba(0, 0, 0, 0) 100%);
 

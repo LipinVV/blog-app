@@ -19,7 +19,7 @@
 
 .user__personal-information {
   border-collapse: collapse;
-  border: 1px solid $font-black;
+  border: 1px solid $black;
   table-layout: fixed;
   width: 100%;
   height: 100%;
@@ -41,7 +41,7 @@
 }
 
 .user__personal-information-cell {
-  border: 1px solid $font-black;
+  border: 1px solid $black;
 
   @media screen and (min-width: $mobileDevice) {
     padding: 5px 0 5px 5px;
@@ -81,7 +81,7 @@
 }
 
 .user__personal-empty-cell {
-  border: 1px solid $font-black;
+  border: 1px solid $black;
 
   @media screen and (min-width: $mobileDevice) {
     display: none;
