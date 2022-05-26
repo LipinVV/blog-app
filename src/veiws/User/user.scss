@@ -13,38 +13,58 @@ $font-orange: #f44d42;
   display: grid;
   flex-direction: column;
   grid-gap: 25px;
-}
 
-.user__posts {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 20px;
-
-  @media screen and (min-width: $desktopDevice) {
-    padding: 0 53px;
+  @media screen and (min-width: $mobileDevice) {
+    max-width: $mobileDevice;
   }
-}
 
-.user__posts-header {
-  grid-column: 1/-1;
-  margin: 0;
-  font-size: 35px;
-  font-weight: 500;
+  @media screen and (min-width: $tabletDevice) {
+    max-width: $tabletDevice;
+  }
+  @media screen and (min-width: $desktopDevice) {
+    max-width: $desktopDevice;
+  }
 }
 
 .user__personal-information {
   border-collapse: collapse;
   border: 1px solid $font-black;
+  table-layout: fixed;
+  width: 100%;
+  height: 100%;
+
+  @media screen and (min-width: $mobileDevice) {
+    max-width: $mobileDevice;
+  }
+
+  @media screen and (min-width: $tabletDevice) {
+    max-width: $tabletDevice;
+  }
 
   @media screen and (min-width: $desktopDevice) {
-      margin-top: 36px;
+    max-width: $desktopDevice;
+    margin-top: 36px;
+    width: unset;
+    height: unset;
   }
 }
 
 .user__personal-information-cell {
   border: 1px solid $font-black;
+
+  @media screen and (min-width: $mobileDevice) {
+    padding: 5px 0 5px 5px;
+    font-size: 8px;
+    word-wrap: break-word;
+  }
+
+  @media screen and (min-width: $tabletDevice) {
+    font-size: 12px;
+  }
+
   @media screen and (min-width: $desktopDevice) {
     padding: 11px 0 14px 22px;
+    font-size: unset;
     &:nth-of-type(1) {
       padding-left: 18px;
     }
@@ -52,10 +72,18 @@ $font-orange: #f44d42;
 }
 
 .user__personal-information-name {
+  font-weight: 500;
+  @media screen and (min-width: $mobileDevice) {
+    font-size: 17px;
+    padding-left: 10px;
+  }
+
+  @media screen and (min-width: $tabletDevice) {
+    font-size: 25px;
+  }
 
   @media screen and (min-width: $desktopDevice) {
     font-size: 35px;
-    font-weight: 500;
     line-height: 40px;
     padding: 11px 0 11px 18px;
   }
@@ -63,33 +91,13 @@ $font-orange: #f44d42;
 
 .user__personal-empty-cell {
   border: 1px solid $font-black;
+
+  @media screen and (min-width: $mobileDevice) {
+    display: none;
+  }
+
   @media screen and (min-width: $desktopDevice) {
     width: 53px;
+    display: revert;
   }
-}
-
-.user__button-show-all,
-.user__button-hide-all {
-  display: grid;
-  background-color: $font-orange;
-  grid-column: 1 / -1;
-
-  &:hover {
-    background-color: $font-green;
-    color: $font-white;
-  }
-
-  @media screen and (min-width: $desktopDevice) {
-    min-width: 150px;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    padding: 10px 20px;
-    border-radius: 10px;
-    border: none;
-    font-size: 12px;
-    margin: 0 auto 50px;
-    font-weight: 600;
-  }
-
 }

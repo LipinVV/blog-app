@@ -1,0 +1,81 @@
+$mobileDevice: 320px;
+$tabletDevice: 660px;
+$desktopDevice: 1024px;
+
+$font-black: #000000;
+$font-white: #FFFFFF;
+$font-gray: rgba(0, 0, 0, 0.41);
+$font-green: #06b25a;
+$font-red: #FF0000FF;
+$font-orange: #f44d42;
+
+.posts {
+  display: grid;
+
+  @media screen and (min-width: $mobileDevice) {
+    grid-gap: 10px;
+    max-width: $mobileDevice;
+  }
+
+  @media screen and (min-width: $tabletDevice) {
+    grid-gap: 15px;
+    max-width: $tabletDevice;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media screen and (min-width: $desktopDevice) {
+    max-width: $desktopDevice;
+    padding: 0 53px;
+    grid-gap: 20px;
+  }
+}
+
+.posts__header {
+  grid-column: 1/-1;
+  margin: 0;
+  font-weight: 500;
+
+  @media screen and (min-width: $mobileDevice) {
+    font-size: 17px;
+  }
+
+  @media screen and (min-width: $tabletDevice) {
+    font-size: 25px;
+  }
+
+  @media screen and (min-width: $desktopDevice) {
+    font-size: 35px;
+  }
+}
+
+.posts__button-show-all,
+.posts__button-hide-all {
+  display: grid;
+  background-color: $font-orange;
+  grid-column: 1 / -1;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+
+  &:hover {
+    background-color: $font-green;
+    color: $font-white;
+  }
+
+  @media screen and (min-width: $mobileDevice) {
+    min-width: 100px;
+    padding: 5px 12px;
+    margin: 0 auto 10px;
+    font-size: 12px;
+  }
+
+  @media screen and (min-width: $desktopDevice) {
+    min-width: 150px;
+    padding: 10px 20px;
+    font-size: 12px;
+    margin: 0 auto 50px;
+    font-weight: 600;
+  }
+}

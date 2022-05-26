@@ -3,6 +3,7 @@ import { useParams } from 'react-router';
 import { PostType, StateType, UserType } from '../../types';
 import { Post } from '../../components/Post';
 import { useAppSelector } from '../../hooks/hooks';
+import './posts.scss';
 
 export const Posts = ({ username }: UserType) => {
   const { id } = useParams();
@@ -11,8 +12,8 @@ export const Posts = ({ username }: UserType) => {
   const posts = postLists.slice(0, numberOfPosts);
 
   return (
-    <div className="user__posts">
-      <h4 className="user__posts-header">User posts</h4>
+    <div className="posts">
+      <h4 className="posts__header">User posts</h4>
       {posts.map((post: PostType) => (
         <Post
           userName={username}
@@ -24,8 +25,8 @@ export const Posts = ({ username }: UserType) => {
         />
       ))}
       {numberOfPosts === 3
-        ? <button className="user__button-show-all" type="button" onClick={() => setNumberOfPosts(postLists.length)}>Show all</button>
-        : <button className="user__button-hide-all" type="button" onClick={() => setNumberOfPosts(3)}>Hide all</button>}
+        ? <button className="posts__button-show-all" type="button" onClick={() => setNumberOfPosts(postLists.length)}>Show all</button>
+        : <button className="posts__button-hide-all" type="button" onClick={() => setNumberOfPosts(3)}>Hide all</button>}
     </div>
   );
 };

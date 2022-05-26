@@ -13,11 +13,15 @@ $smoke: #eee8e8;
 .post {
   display: grid;
   border: 1px solid #000000;
-  grid-gap: 20px;
   grid-template-rows: repeat(4, 0.1fr);
 
-  @media screen and (min-width: $desktopDevice) {
+  @media screen and (min-width: $mobileDevice) {
+    grid-gap: 10px;
+    font-size: 12px;
+  }
 
+  @media screen and (min-width: $desktopDevice) {
+    grid-gap: 20px;
     & * {
       padding: 14px 20px 0 20px;
       margin: 0;
@@ -30,6 +34,13 @@ $smoke: #eee8e8;
     text-transform: capitalize;
   }
 
+  @media screen and (min-width: $mobileDevice) {
+    font-size: 12px;
+    font-weight: 500;
+    margin: 5px 0;
+    padding-left: 7px;
+  }
+
   @media screen and (min-width: $desktopDevice) {
     font-size: 17px;
     font-weight: 700;
@@ -38,7 +49,10 @@ $smoke: #eee8e8;
 
 .post__button-open,
 .post__button-close {
+  cursor: pointer;
   display: flex;
+  justify-content: center;
+  align-items: center;
   background: radial-gradient(150% 50% at 50% 60%, $smoke 80%, rgba(0, 0, 0, 0) 100%);
 
   &:hover {
@@ -46,12 +60,19 @@ $smoke: #eee8e8;
     color: $font-white;
   }
 
+  @media screen and (min-width: $mobileDevice) {
+    font-size: 10px;
+    margin-left: 7px;
+    margin-right: 7px;
+    transform: translateY(-15px);
+    border: none;
+    max-height: 25px;
+    padding: 5px 12px;
+  }
+
   @media screen and (min-width: $desktopDevice) {
     margin-left: 10px;
     margin-right: 10px;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
     padding: 10px 20px;
     border-radius: 10px;
     border: none;
@@ -65,7 +86,8 @@ $smoke: #eee8e8;
 .post__button-close {
   background: $font-green;
   color: $font-white;
-  @media screen and (min-width: $desktopDevice) {
+
+  @media screen and (min-width: $mobileDevice) {
     transform: translateY(0);
   }
 }
@@ -77,11 +99,21 @@ $smoke: #eee8e8;
   color: $font-white;
   background-color: $font-black;
   border-radius: 10px;
-  padding: 10px 10px;
   justify-self: center;
 
   &:hover {
     background-color: $font-green;
+  }
+
+  @media screen and (min-width: $mobileDevice) {
+    max-width: 80px;
+    font-size: 10px;
+    padding: 7px 10px;
+    margin-bottom: 7px;
+  }
+
+  @media screen and (min-width: $tabletDevice) {
+    margin-bottom: 12px;
   }
 
   @media screen and (min-width: $desktopDevice) {
@@ -95,5 +127,9 @@ $smoke: #eee8e8;
 .post__text {
   &:first-letter {
     text-transform: capitalize;
+  }
+  @media screen and (min-width: $mobileDevice) {
+    margin: 0;
+    padding-left: 7px;
   }
 }
