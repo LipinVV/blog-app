@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { StateType, UserType } from '../../types';
 import { fetchUserPost } from '../../reducers/usersSlice';
 import { Posts } from '../Posts';
+import './userPage.scss';
 
 export const UserPage = () => {
   const { id } = useParams();
@@ -23,7 +24,7 @@ export const UserPage = () => {
   if (!currentUser) return <div>Loading user....</div>;
 
   return (
-    <div>
+    <div className="user-page">
       <User
         name={currentUser.name}
         email={currentUser.email}

@@ -10,6 +10,10 @@ $font-white: #FFFFFF;
   background: url("../../../public/main-bg.png") $font-black center;
   background-size: cover;
 
+  @media screen and (min-width: $mobileDevice) {
+    min-height: 200px;
+  }
+
   @media screen and (min-width: $desktopDevice) {
     min-height: 439px;
   }
@@ -32,9 +36,16 @@ $font-white: #FFFFFF;
 }
 
 .landing-page__main-section-sub-header {
-  top: 60%;
+
+  @media screen and (min-width: $mobileDevice) {
+    top: 70%;
+    width: 100%;
+    text-align: center;
+  }
   @media screen and (min-width: $desktopDevice) {
     font-size: 30px;
     font-weight: 700;
+    top: 60%;
+    width: unset;
   }
 }

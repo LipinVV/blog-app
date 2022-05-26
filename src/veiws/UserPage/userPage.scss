@@ -2,11 +2,7 @@ $mobileDevice: 320px;
 $tabletDevice: 660px;
 $desktopDevice: 1024px;
 
-.App {
-  margin: 0 auto;
-  padding: 0 20px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
-
+.user-page {
   @media screen and (min-width: $mobileDevice) {
     max-width: $mobileDevice;
   }

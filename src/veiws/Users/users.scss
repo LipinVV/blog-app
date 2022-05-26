@@ -8,10 +8,15 @@ $font-gray: rgba(0, 0, 0, 0.41);
 
 .users {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-gap: 13px;
+
+  @media screen and (min-width: $mobileDevice) {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-gap: 8px;
+  }
 
   @media screen and (min-width: $desktopDevice) {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 13px;
     padding: 0 60px;
   }
 
@@ -21,30 +26,44 @@ $font-gray: rgba(0, 0, 0, 0.41);
   display: grid;
   grid-column: 1/-1;
   margin: 10px 0;
+
+  @media screen and (min-width: $mobileDevice) {
+    font-size: 17px;
+  }
+
+  @media screen and (min-width: $desktopDevice) {
+    font-size: 35px;
+  }
+
 }
 
 .users__link {
   text-decoration: none;
   color: $font-white;
+  background-color: $font-black;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   border: 1px solid $font-black;
 
+  &:hover {
+    background-color: $font-white;
+    color: $font-black;
+    border: 1px solid $font-black;
+  }
+
+  @media screen and (min-width: $mobileDevice) {
+    font-size: 11px;
+    max-width: 120px;
+    margin: 0 0 7px 7px;
+  }
+
   @media screen and (min-width: $desktopDevice) {
     font-size: 11px;
     font-weight: 600;
-    background-color: $font-black;
     max-width: 148px;
-    margin-left: 17px;
-    margin-bottom: 15px;
-
-    &:hover {
-      background-color: $font-white;
-      color: $font-black;
-      border: 1px solid $font-black;
-    }
+    margin: 0 0 15px 17px;
   }
 }
 
@@ -52,12 +71,23 @@ $font-gray: rgba(0, 0, 0, 0.41);
   display: grid;
   border: 1px solid $font-black;
 
+  @media screen and (min-width: $mobileDevice) {
+    min-height: 100px;
+  }
+
   @media screen and (min-width: $desktopDevice) {
     min-height: 143px;
   }
 }
 
 .users__user-card-name {
+
+  @media screen and (min-width: $mobileDevice) {
+    font-size: 12px;
+    font-weight: 600;
+    padding-left: 7px;
+  }
+
   @media screen and (min-width: $desktopDevice) {
     padding-top: 14px;
     padding-left: 17px;
@@ -68,6 +98,12 @@ $font-gray: rgba(0, 0, 0, 0.41);
 }
 
 .users__user-card-city {
+
+  @media screen and (min-width: $mobileDevice) {
+    font-size: 12px;
+    padding-left: 7px;
+  }
+
   @media screen and (min-width: $desktopDevice) {
     font-size: 12px;
     color: $font-gray;

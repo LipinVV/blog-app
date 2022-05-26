@@ -11,7 +11,16 @@ $font-orange: #f44d42;
 
 .navigation {
   position: relative;
-  min-height: 70px;
+
+  @media screen and (min-width: $mobileDevice) {
+    max-width: $mobileDevice;
+    min-height: 40px;
+  }
+
+  @media screen and (min-width: $desktopDevice) {
+    max-width: $desktopDevice;
+    min-height: 70px;
+  }
 }
 
 .navigation__header {
@@ -21,6 +30,17 @@ $font-orange: #f44d42;
   font-size: 28px;
   font-weight: 700;
   padding: 17px 0;
+
+  @media screen and (min-width: $mobileDevice) {
+    max-width: $mobileDevice;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  @media screen and (min-width: $desktopDevice) {
+    max-width: $desktopDevice;
+    font-size: 28px;
+  }
 
   &:hover {
     color: $font-green;
@@ -33,10 +53,10 @@ $font-orange: #f44d42;
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding: 0 60px;
 
   @media screen and (min-width: $mobileDevice) {
     max-width: $mobileDevice;
+    padding: 0 20px;
   }
 
   @media screen and (min-width: $tabletDevice) {
@@ -45,6 +65,7 @@ $font-orange: #f44d42;
 
   @media screen and (min-width: $desktopDevice) {
     max-width: $desktopDevice;
+    padding: 0 60px;
   }
 }
 
@@ -56,8 +77,12 @@ $font-orange: #f44d42;
   justify-content: center;
   align-items: center;
 
-  @media screen and (min-width: $desktopDevice) {
+  @media screen and (min-width: $mobileDevice) {
     grid-gap: 12px;
+  }
+
+  @media screen and (min-width: $desktopDevice) {
+    grid-gap: 20px;
   }
 }
 
@@ -67,19 +92,26 @@ $font-orange: #f44d42;
   color: $font-black;
   justify-content: center;
   align-items: center;
+  background-color: $font-white;
+  border: 1px solid $font-black;
+
+  &:hover {
+    background-color: $font-black;
+    color: $font-white;
+    border: 1px solid $font-white;
+  }
+
+  @media screen and (min-width: $mobileDevice) {
+    min-height: 40px;
+    font-size: 10px;
+    padding: 0 5px;
+    font-weight: 600;
+  }
 
   @media screen and (min-width: $desktopDevice) {
     min-width: 205px;
-    min-height: 40px;
-    background-color: $font-white;
     font-weight: 600;
     font-size: 14px;
-
-    &:hover {
-      background-color: $font-black;
-      color: $font-white;
-      border: 1px solid $font-white;
-    }
   }
 }
 

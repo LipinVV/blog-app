@@ -7,7 +7,7 @@ export const Navigation: FC = () => (
     <section className="navigation__bar">
       <Link to="/" className="navigation__header">Free Speak</Link>
       <div className="navigation__links">
-        <Link to="/" className="navigation__link">For the visually impaired</Link>
+        <Link to="/" className="navigation__link">Get started</Link>
         <Link to="/" className="navigation__link">My profile</Link>
       </div>
     </section>
