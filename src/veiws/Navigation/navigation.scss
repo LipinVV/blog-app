@@ -17,6 +17,10 @@ $font-orange: #f44d42;
     min-height: 40px;
   }
 
+  @media screen and (min-width: $tabletDevice) {
+    max-width: $tabletDevice;
+  }
+
   @media screen and (min-width: $desktopDevice) {
     max-width: $desktopDevice;
     min-height: 70px;
@@ -29,17 +33,23 @@ $font-orange: #f44d42;
   color: $font-white;
   font-size: 28px;
   font-weight: 700;
-  padding: 17px 0;
 
   @media screen and (min-width: $mobileDevice) {
     max-width: $mobileDevice;
     font-size: 14px;
     font-weight: 600;
+    padding: 12px 0;
+  }
+
+  @media screen and (min-width: $tabletDevice) {
+    max-width: $tabletDevice;
+    font-size: 21px;
   }
 
   @media screen and (min-width: $desktopDevice) {
     max-width: $desktopDevice;
     font-size: 28px;
+    padding: 17px 0;
   }
 
   &:hover {
@@ -61,6 +71,7 @@ $font-orange: #f44d42;
 
   @media screen and (min-width: $tabletDevice) {
     max-width: $tabletDevice;
+    padding: 0 40px;
   }
 
   @media screen and (min-width: $desktopDevice) {
@@ -79,6 +90,10 @@ $font-orange: #f44d42;
 
   @media screen and (min-width: $mobileDevice) {
     grid-gap: 12px;
+  }
+
+  @media screen and (min-width: $tabletDevice) {
+    grid-gap: 16px;
   }
 
   @media screen and (min-width: $desktopDevice) {
@@ -108,10 +123,13 @@ $font-orange: #f44d42;
     font-weight: 600;
   }
 
+  @media screen and (min-width: $tabletDevice) {
+    font-size: 14px;
+  }
+
   @media screen and (min-width: $desktopDevice) {
     min-width: 205px;
     font-weight: 600;
-    font-size: 14px;
   }
 }
 

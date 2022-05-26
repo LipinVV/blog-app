@@ -14,6 +14,11 @@ $font-gray: rgba(0, 0, 0, 0.41);
     grid-gap: 8px;
   }
 
+  @media screen and (min-width: $tabletDevice) {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    grid-gap: 10px;
+  }
+
   @media screen and (min-width: $desktopDevice) {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-gap: 13px;
@@ -30,6 +35,11 @@ $font-gray: rgba(0, 0, 0, 0.41);
   @media screen and (min-width: $mobileDevice) {
     font-size: 17px;
   }
+
+  @media screen and (min-width: $tabletDevice) {
+    font-size: 24px;
+  }
+
 
   @media screen and (min-width: $desktopDevice) {
     font-size: 35px;
@@ -59,8 +69,11 @@ $font-gray: rgba(0, 0, 0, 0.41);
     margin: 0 0 7px 7px;
   }
 
+  @media screen and (min-width: $tabletDevice) {
+    max-width: 130px;
+  }
+
   @media screen and (min-width: $desktopDevice) {
-    font-size: 11px;
     font-weight: 600;
     max-width: 148px;
     margin: 0 0 15px 17px;
@@ -75,22 +88,28 @@ $font-gray: rgba(0, 0, 0, 0.41);
     min-height: 100px;
   }
 
+  @media screen and (min-width: $tabletDevice) {
+    min-height: 120px;
+  }
+
   @media screen and (min-width: $desktopDevice) {
     min-height: 143px;
   }
 }
 
 .users__user-card-name {
-
   @media screen and (min-width: $mobileDevice) {
+    padding: 7px 0 0 7px;
     font-size: 12px;
     font-weight: 600;
-    padding-left: 7px;
+  }
+
+  @media screen and (min-width: $tabletDevice) {
+    padding: 12px 0 0 12px;
   }
 
   @media screen and (min-width: $desktopDevice) {
-    padding-top: 14px;
-    padding-left: 17px;
+    padding: 14px 0 0 17px;
     font-size: 17px;
     font-weight: 700;
     color: $font-black;
@@ -98,10 +117,13 @@ $font-gray: rgba(0, 0, 0, 0.41);
 }
 
 .users__user-card-city {
-
   @media screen and (min-width: $mobileDevice) {
     font-size: 12px;
     padding-left: 7px;
+  }
+
+  @media screen and (min-width: $tabletDevice) {
+    padding-left: 12px;
   }
 
   @media screen and (min-width: $desktopDevice) {

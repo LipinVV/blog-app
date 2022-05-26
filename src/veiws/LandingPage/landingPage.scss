@@ -14,6 +14,10 @@ $font-white: #FFFFFF;
     min-height: 200px;
   }
 
+  @media screen and (min-width: $tabletDevice) {
+    min-height: 300px;
+  }
+
   @media screen and (min-width: $desktopDevice) {
     min-height: 439px;
   }
@@ -29,23 +33,32 @@ $font-white: #FFFFFF;
   margin: 0;
   background: radial-gradient(150% 50% at 50% 60%, #000000 50%, rgba(0, 0, 0, 0) 100%);
 
+  @media screen and (min-width: $tabletDevice) {
+    font-size: 35px;
+    font-weight: 700;
+  }
+
   @media screen and (min-width: $desktopDevice) {
     font-size: 50px;
-    font-weight: 700;
   }
 }
 
 .landing-page__main-section-sub-header {
-
   @media screen and (min-width: $mobileDevice) {
     top: 70%;
     width: 100%;
     text-align: center;
   }
+
+  @media screen and (min-width: $tabletDevice) {
+    font-size: 20px;
+    width: 60%;
+  }
+
+
   @media screen and (min-width: $desktopDevice) {
     font-size: 30px;
     font-weight: 700;
     top: 60%;
-    width: unset;
   }
 }
