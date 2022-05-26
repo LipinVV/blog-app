@@ -119,7 +119,7 @@ export const Comments: FC = () => {
             />
             <button
               className="comments__form-button"
-              disabled={!newComment.text.length || !newComment.name.length || !newComment.email.length || error.length > 0}
+              disabled={!Object.values(newComment).length || error.length > 0}
               type="submit"
               onClick={(event) => {
                 event.preventDefault();

@@ -26,6 +26,7 @@ export const UserPage = () => {
   return (
     <div className="user-page">
       <User
+        geo={currentUser.geo}
         name={currentUser.name}
         email={currentUser.email}
         id={currentUser.id}
@@ -36,6 +37,7 @@ export const UserPage = () => {
         phone={currentUser.phone}
       />
       <Posts
+        geo={currentUser.geo}
         name={currentUser.name}
         email={currentUser.email}
         id={currentUser.id}
