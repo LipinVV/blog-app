@@ -29,12 +29,16 @@ $font-orange: #f44d42;
   border: 2px solid $font-black;
   min-width: 300px;
   grid-template-columns: 1fr 3fr;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   font-size: 15px;
 
   &:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-}
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  @media screen and (min-width: $tabletDevice) {
+    min-width: 500px;
+  }
 }
 
 .comments__current-post {
@@ -47,7 +51,21 @@ $font-orange: #f44d42;
 
 .comments__current-post-section {
   color: $font-orange;
-  font-weight: 700;
+
+  @media screen and (min-width: $mobileDevice) {
+    font-weight: 500;
+    font-size: 12px;
+  }
+
+  @media screen and (min-width: $tabletDevice) {
+    font-weight: 600;
+    font-size: 15px;
+  }
+
+  @media screen and (min-width: $desktopDevice) {
+    font-weight: 700;
+    font-size: unset;
+  }
 }
 
 .comments__current-post-section-normal {

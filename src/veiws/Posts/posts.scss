@@ -32,10 +32,10 @@ $font-orange: #f44d42;
 
 .posts__header {
   grid-column: 1/-1;
-  margin: 0;
   font-weight: 500;
 
   @media screen and (min-width: $mobileDevice) {
+    margin: 10px 0 0 0;
     font-size: 17px;
   }
 
@@ -45,6 +45,7 @@ $font-orange: #f44d42;
 
   @media screen and (min-width: $desktopDevice) {
     font-size: 35px;
+    margin: 15px 0 0 0;
   }
 }
 
@@ -58,6 +59,7 @@ $font-orange: #f44d42;
   cursor: pointer;
   border: none;
   border-radius: 10px;
+  font-weight: 600;
 
   &:hover {
     background-color: $font-green;
@@ -76,6 +78,5 @@ $font-orange: #f44d42;
     padding: 10px 20px;
     font-size: 12px;
     margin: 0 auto 50px;
-    font-weight: 600;
   }
 }

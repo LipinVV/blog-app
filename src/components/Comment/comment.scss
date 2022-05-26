@@ -1,3 +1,6 @@
+$mobileDevice: 320px;
+$tabletDevice: 660px;
+$desktopDevice: 1024px;
 $font-black: #000000;
 
 .comment {
@@ -6,4 +9,16 @@ $font-black: #000000;
   flex-direction: column;
   padding: 10px;
   font-size: 15px;
+
+  @media screen and (min-width: $mobileDevice) {
+    font-size: 10px;
+  }
+
+  @media screen and (min-width: $tabletDevice) {
+    font-size: 12px;
+  }
+
+  @media screen and (min-width: $desktopDevice) {
+    font-size: unset;
+  }
 }
