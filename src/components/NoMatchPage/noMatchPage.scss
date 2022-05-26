@@ -1,13 +1,4 @@
-$mobileDevice: 320px;
-$tabletDevice: 660px;
-$desktopDevice: 1024px;
-
-$font-black: #000000;
-$font-white: #FFFFFF;
-$font-gray: rgba(0, 0, 0, 0.41);
-$font-green: #06b25a;
-$font-red: #FF0000FF;
-$font-orange: #f44d42;
+@import "src/styles/variables";
 
 .no-match-page {
   display: flex;

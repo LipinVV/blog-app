@@ -1,6 +1,4 @@
-$mobileDevice: 320px;
-$tabletDevice: 660px;
-$desktopDevice: 1024px;
+@import "src/styles/variables";
 
 .user-page {
   @media screen and (min-width: $mobileDevice) {

@@ -1,16 +1,13 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { PostType } from '../../types';
-import { fetchPostComments } from '../../reducers/usersSlice';
-import { useAppDispatch } from '../../hooks/hooks';
+import { appConsts } from '../../consts';
 import './post.scss';
 
 export const Post = ({
   body, title, id, postId, userName,
 }: PostType) => {
-  const dispatch = useAppDispatch();
-
-  const valueToSliceTheText = 50;
+  const { valueToSliceTheText } = appConsts;
   const [showingText, setShowingText] = useState(valueToSliceTheText);
 
   return (
@@ -37,7 +34,6 @@ export const Post = ({
         )}
       <Link
         className="post__link"
-        onClick={() => dispatch(fetchPostComments(postId))}
         to={`/users/${userName}/${id}/${postId}/comments`}
       >
         To comments

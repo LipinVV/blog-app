@@ -41,4 +41,13 @@ export type StateType = {
     users: UserType[],
     posts: PostType[],
     comments: CommentType[],
+    isLoading: boolean
+}
+
+export type PaginationProps = {
+    handleClickDecrease: () => void,
+    handleClickIncrease: () => void,
+    currentPage: number,
+    users: UserType[],
+    indexOfLastItem: number,
 }

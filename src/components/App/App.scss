@@ -1,6 +1,4 @@
-$mobileDevice: 320px;
-$tabletDevice: 660px;
-$desktopDevice: 1024px;
+@import "src/styles/variables";
 
 .App {
   margin: 0 auto;

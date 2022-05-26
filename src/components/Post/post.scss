@@ -1,20 +1,9 @@
-$mobileDevice: 320px;
-$tabletDevice: 660px;
-$desktopDevice: 1024px;
-
-$font-black: #000000;
-$font-white: #FFFFFF;
-$font-gray: rgba(0, 0, 0, 0.41);
-$font-green: #06b25a;
-$font-red: #FF0000FF;
-$font-orange: #f44d42;
-$smoke: #eee8e8;
+@import "src/styles/variables";
 
 .post {
   display: grid;
   border: 1px solid #000000;
   grid-template-rows: repeat(4, 0.1fr);
-
   @media screen and (min-width: $mobileDevice) {
     grid-gap: 10px;
     font-size: 12px;
@@ -39,9 +28,12 @@ $smoke: #eee8e8;
     font-weight: 500;
     margin: 5px 0;
     padding-left: 7px;
+    min-height: 40px;
+
   }
 
   @media screen and (min-width: $desktopDevice) {
+    min-height: 74px;
     font-size: 17px;
     font-weight: 700;
   }

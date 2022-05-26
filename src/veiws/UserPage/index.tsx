@@ -1,25 +1,25 @@
 import { useParams } from 'react-router';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { User } from '../User';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
-import { StateType, UserType } from '../../types';
-import { fetchUserPost } from '../../reducers/usersSlice';
+import { UserType } from '../../types';
+import { fetchUserPosts } from '../../reducers/usersSlice';
 import { Posts } from '../Posts';
+import { getUsers } from '../../selectors';
 import './userPage.scss';
 
 export const UserPage = () => {
   const { id } = useParams();
   const dispatch = useAppDispatch();
-
-  const userList = useAppSelector((state: StateType) => state.users);
-
-  const currentUser = userList.find((user: UserType) => user.id === Number(id));
+  const userList = useAppSelector(getUsers);
+  const limit = 3;
+  const currentUser = useMemo(() => userList.find((user: UserType) => user.id === Number(id)), [id]);
 
   useEffect(() => {
     if (currentUser) {
-      dispatch(fetchUserPost(Number(id)));
+      dispatch(fetchUserPosts({ id: Number(id), limit }));
     }
-  }, [currentUser, dispatch, id]);
+  }, [currentUser, id, limit]);
 
   if (!currentUser) return <div>Loading user....</div>;
 

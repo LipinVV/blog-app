@@ -7,6 +7,7 @@ export const INITIAL_STATE: StateType = {
   users: [],
   posts: [],
   comments: [],
+  isLoading: true,
 };
 
 export const fetchUsers = createAsyncThunk<UserType[], undefined, { rejectValue: string }>(
@@ -20,10 +21,10 @@ export const fetchUsers = createAsyncThunk<UserType[], undefined, { rejectValue:
   },
 );
 
-export const fetchUserPost = createAsyncThunk<PostType[], number, { rejectValue: string }>(
+export const fetchUserPosts = createAsyncThunk<PostType[], {id: number, limit: number}, { rejectValue: string }>(
   'users/fetchUserPost',
-  async (id, { rejectWithValue }) => {
-    const response = await fetch(`https://jsonplaceholder.typicode.com/posts?userId=${id}`);
+  async ({ id, limit }, { rejectWithValue }) => {
+    const response = await fetch(`https://jsonplaceholder.typicode.com/posts?userId=${id}&_limit=${limit}`);
     if (!response.ok) {
       return rejectWithValue('Server error');
     }
@@ -72,14 +73,27 @@ export const usersSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+      .addCase(fetchUsers.pending, (state) => {
+        state.isLoading = true;
+      })
       .addCase(fetchUsers.fulfilled, (state, action) => {
+        state.isLoading = false;
         state.users = action.payload;
+      })
+      .addCase(fetchPostComments.pending, (state) => {
+        state.isLoading = true;
       })
       .addCase(fetchPostComments.fulfilled, (state, action) => {
         state.comments = action.payload;
       })
-      .addCase(fetchUserPost.fulfilled, (state, action) => {
+      .addCase(fetchUserPosts.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchUserPosts.fulfilled, (state, action) => {
         state.posts = action.payload;
+      })
+      .addCase(postUserComment.pending, (state) => {
+        state.isLoading = true;
       })
       .addCase(postUserComment.fulfilled, (state, action) => {
         state.comments.push(action.payload);

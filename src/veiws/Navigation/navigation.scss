@@ -1,13 +1,4 @@
-$mobileDevice: 320px;
-$tabletDevice: 660px;
-$desktopDevice: 1024px;
-
-$font-black: #000000;
-$font-white: #FFFFFF;
-$font-gray: rgba(0, 0, 0, 0.41);
-$font-green: #06b25a;
-$font-red: #FF0000FF;
-$font-orange: #f44d42;
+@import "src/styles/variables";
 
 .navigation {
   position: relative;
@@ -77,59 +68,6 @@ $font-orange: #f44d42;
   @media screen and (min-width: $desktopDevice) {
     max-width: $desktopDevice;
     padding: 0 60px;
-  }
-}
-
-.navigation__links {
-  list-style: none;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  justify-content: center;
-  align-items: center;
-
-  @media screen and (min-width: $mobileDevice) {
-    grid-gap: 12px;
-  }
-
-  @media screen and (min-width: $tabletDevice) {
-    grid-gap: 16px;
-  }
-
-  @media screen and (min-width: $desktopDevice) {
-    grid-gap: 20px;
-  }
-}
-
-.navigation__link {
-  display: flex;
-  text-decoration: none;
-  color: $font-black;
-  justify-content: center;
-  align-items: center;
-  background-color: $font-white;
-  border: 1px solid $font-black;
-
-  &:hover {
-    background-color: $font-black;
-    color: $font-white;
-    border: 1px solid $font-white;
-  }
-
-  @media screen and (min-width: $mobileDevice) {
-    min-height: 30px;
-    font-size: 10px;
-    padding: 0 5px;
-    font-weight: 600;
-  }
-
-  @media screen and (min-width: $tabletDevice) {
-    font-size: 14px;
-  }
-
-  @media screen and (min-width: $desktopDevice) {
-    min-width: 205px;
-    font-weight: 600;
   }
 }
 

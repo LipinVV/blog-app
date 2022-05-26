@@ -1,13 +1,5 @@
-import { UserType } from '../../types';
+import { PaginationProps } from '../../types';
 import './pagination.scss';
-
-type PaginationProps = {
-    handleClickDecrease: () => void,
-    handleClickIncrease: () => void,
-    currentPage: number,
-    users: UserType[],
-    indexOfLastItem: number,
-}
 
 export const Pagination = ({
   handleClickDecrease, handleClickIncrease, currentPage, users, indexOfLastItem,

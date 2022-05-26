@@ -1,32 +1,38 @@
-import { FC, useState } from 'react';
+import {
+  BaseSyntheticEvent,
+  FC, useEffect, useMemo, useState,
+} from 'react';
 import { useParams } from 'react-router';
-import { CommentType, PostType, StateType } from '../../types';
+import { CommentType, PostType } from '../../types';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { Comment } from '../../components/Comment';
-import { postUserComment } from '../../reducers/usersSlice';
+import { fetchPostComments, postUserComment } from '../../reducers/usersSlice';
+import { appConsts } from '../../consts';
+import { getComments, getPosts } from '../../selectors';
 import './comments.scss';
 
 export const Comments: FC = () => {
+  const { id, postId } = useParams();
   const dispatch = useAppDispatch();
+  const commentList = useAppSelector(getComments);
+  const postsList = useAppSelector(getPosts);
 
-  const commentList = useAppSelector((state: StateType) => state.comments);
+  useEffect(() => {
+    dispatch(fetchPostComments(Number(postId)));
+  }, []);
 
-  const postsList = useAppSelector((state: StateType) => state.posts);
-
-  const { postId } = useParams();
-  const { id } = useParams();
-
-  const [sendStatus, setSendStatus] = useState<boolean>(false);
+  const [sendStatus, setSendStatus] = useState(false);
   const [newComment, setNewComment] = useState({
     name: '',
     email: '',
     text: '',
   });
 
-  const [error, setError] = useState<string>('');
-  const currentPost = postsList.find((post: PostType) => post.id === Number(postId));
-  const maxStrokeLength = 5;
-  const formFieldsHandler = (value: string, type: string) => {
+  const [error, setError] = useState('');
+  const currentPost = useMemo(() => postsList.find((post: PostType) => post.id === Number(postId)), [postId]);
+  const { maxStrokeLength } = appConsts;
+  const formFieldsHandler = (event: BaseSyntheticEvent, type: string) => {
+    const { value } = event.target;
     if (type === 'email') {
       if (!value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
         setError('email is not valid!');
@@ -48,6 +54,26 @@ export const Comments: FC = () => {
         setError('');
       }
     }
+  };
+
+  const commentHandler = (event: BaseSyntheticEvent, key: string) => {
+    const { value } = event.target;
+    setNewComment({ ...newComment, [key]: value });
+  };
+
+  const postMessageHandler = (event: BaseSyntheticEvent) => {
+    event.preventDefault();
+    setSendStatus(!sendStatus);
+    dispatch(postUserComment({
+      id: Number(id),
+      postId: Number(postId),
+      newComment: {
+        id: Number(id),
+        name: newComment.name,
+        email: newComment.email,
+        body: newComment.text,
+      },
+    }));
   };
 
   return (
@@ -92,8 +118,8 @@ export const Comments: FC = () => {
               type="text"
               value={newComment.name}
               onChange={(event) => {
-                setNewComment({ ...newComment, name: event.target.value });
-                formFieldsHandler(event.target.value, 'name');
+                commentHandler(event, 'name');
+                formFieldsHandler(event, 'name');
               }}
             />
             <label htmlFor="text" className="comments__form-label">email</label>
@@ -103,8 +129,8 @@ export const Comments: FC = () => {
               type="email"
               value={newComment.email}
               onChange={(event) => {
-                setNewComment({ ...newComment, email: event.target.value });
-                formFieldsHandler(event.target.value, 'email');
+                commentHandler(event, 'email');
+                formFieldsHandler(event, 'email');
               }}
             />
             <label htmlFor="text" className="comments__form-label">text</label>
@@ -113,8 +139,8 @@ export const Comments: FC = () => {
               className="comments__form-text-area"
               value={newComment.text}
               onChange={(event) => {
-                setNewComment({ ...newComment, text: event.target.value });
-                formFieldsHandler(event.target.value, 'text');
+                commentHandler(event, 'text');
+                formFieldsHandler(event, 'text');
               }}
             />
             <button
@@ -122,18 +148,7 @@ export const Comments: FC = () => {
               disabled={!Object.values(newComment).length || error.length > 0}
               type="submit"
               onClick={(event) => {
-                event.preventDefault();
-                setSendStatus(!sendStatus);
-                dispatch(postUserComment({
-                  id: Number(id),
-                  postId: Number(postId),
-                  newComment: {
-                    id: Number(id),
-                    name: newComment.name,
-                    email: newComment.email,
-                    body: newComment.text,
-                  },
-                }));
+                postMessageHandler(event);
                 setNewComment({ name: '', email: '', text: '' });
               }}
             >

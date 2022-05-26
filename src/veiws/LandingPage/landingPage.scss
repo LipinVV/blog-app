@@ -1,9 +1,4 @@
-$mobileDevice: 320px;
-$tabletDevice: 660px;
-$desktopDevice: 1024px;
-
-$font-black: #000000;
-$font-white: #FFFFFF;
+@import "src/styles/variables";
 
 .landing-page__main-section {
   position: relative;

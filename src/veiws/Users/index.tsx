@@ -1,22 +1,24 @@
 import { FC, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { StateType, UserType } from '../../types';
+import { UserType } from '../../types';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { fetchUsers } from '../../reducers/usersSlice';
 import { Pagination } from '../../components/Pagination';
+import { getUsers, getLoading } from '../../selectors';
+import { appConsts } from '../../consts';
 import './users.scss';
 
 export const Users: FC = () => {
   const dispatch = useAppDispatch();
-
-  const userList = useAppSelector((state: StateType) => state.users);
+  const userList = useAppSelector(getUsers);
+  const loading = useAppSelector(getLoading);
 
   useEffect(() => {
     dispatch(fetchUsers());
-  }, [dispatch]);
+  }, []);
 
-  const pageSize = 8;
-  const [currentPage, setCurrentPage] = useState<number>(1);
+  const { pageSize } = appConsts;
+  const [currentPage, setCurrentPage] = useState(1);
   const indexOfLastItem = currentPage * pageSize;
   const indexOfFirstItem = indexOfLastItem - pageSize;
   const currentUsersOnThePage = userList.slice(indexOfFirstItem, indexOfLastItem);
@@ -28,7 +30,7 @@ export const Users: FC = () => {
     setCurrentPage((prevState) => prevState - 1);
   };
 
-  if (!userList.length) return <div>Loading users</div>;
+  if (loading) return <div>Loading users</div>;
 
   return (
     <div className="users">

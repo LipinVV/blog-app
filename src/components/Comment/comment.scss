@@ -1,7 +1,4 @@
-$mobileDevice: 320px;
-$tabletDevice: 660px;
-$desktopDevice: 1024px;
-$font-black: #000000;
+@import "src/styles/variables";
 
 .comment {
   display: flex;
