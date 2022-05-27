@@ -8,7 +8,8 @@ import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { Comment } from '../../components/Comment';
 import { fetchPostComments, postUserComment } from '../../reducers/usersSlice';
 import { appConsts } from '../../consts';
-import { getComments, getPosts } from '../../selectors';
+import { getComments, getLoading, getPosts } from '../../selectors';
+import { LoadingPage } from '../../components/LoadingPage';
 import './comments.scss';
 
 export const Comments: FC = () => {
@@ -16,6 +17,7 @@ export const Comments: FC = () => {
   const dispatch = useAppDispatch();
   const commentList = useAppSelector(getComments);
   const postsList = useAppSelector(getPosts);
+  const loading = useAppSelector(getLoading);
 
   useEffect(() => {
     dispatch(fetchPostComments(Number(postId)));
@@ -76,6 +78,8 @@ export const Comments: FC = () => {
     }));
   };
 
+  if (loading) return <LoadingPage />;
+
   return (
     <div className="comments">
       <section className="comments__current-post">
@@ -119,8 +123,8 @@ export const Comments: FC = () => {
               value={newComment.name}
               onChange={(event) => {
                 commentHandler(event, 'name');
-                formFieldsHandler(event, 'name');
               }}
+              onBlur={(event) => formFieldsHandler(event, 'name')}
             />
             <label htmlFor="text" className="comments__form-label">email</label>
             <input
@@ -130,8 +134,8 @@ export const Comments: FC = () => {
               value={newComment.email}
               onChange={(event) => {
                 commentHandler(event, 'email');
-                formFieldsHandler(event, 'email');
               }}
+              onBlur={(event) => formFieldsHandler(event, 'email')}
             />
             <label htmlFor="text" className="comments__form-label">text</label>
             <textarea
@@ -140,8 +144,8 @@ export const Comments: FC = () => {
               value={newComment.text}
               onChange={(event) => {
                 commentHandler(event, 'text');
-                formFieldsHandler(event, 'text');
               }}
+              onBlur={(event) => formFieldsHandler(event, 'text')}
             />
             <button
               className="comments__form-button"

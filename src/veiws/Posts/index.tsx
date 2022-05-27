@@ -1,24 +1,28 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router';
 import { PostType, UserType } from '../../types';
 import { Post } from '../../components/Post';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { appConsts } from '../../consts';
-import { getPosts } from '../../selectors';
+import { getLoading, getPosts } from '../../selectors';
 import { fetchUserPosts } from '../../reducers/usersSlice';
+import { LoadingPage } from '../../components/LoadingPage';
 import './posts.scss';
 
 export const Posts = ({ username }: UserType) => {
   const { id } = useParams();
   const { currentPosts, onPageMaximumLimit, onPageMinimumLimit } = appConsts;
   const postLists = useAppSelector(getPosts);
+  const loading = useAppSelector(getLoading);
   const dispatch = useAppDispatch();
   const [numberOfPosts, setNumberOfPosts] = useState(currentPosts);
-  const posts = postLists.slice(0, numberOfPosts);
+  const posts = useMemo(() => postLists.slice(0, numberOfPosts), [numberOfPosts]);
 
   useEffect(() => {
     setNumberOfPosts(postLists.length);
   }, [postLists.length]);
+
+  if (!posts.length || loading) return <LoadingPage />;
 
   return (
     <div className="posts">

@@ -7,6 +7,7 @@ import { fetchUserPosts } from '../../reducers/usersSlice';
 import { Posts } from '../Posts';
 import { getUsers } from '../../selectors';
 import { appConsts } from '../../consts';
+import { LoadingPage } from '../../components/LoadingPage';
 import './userPage.scss';
 
 export const UserPage = () => {
@@ -22,7 +23,7 @@ export const UserPage = () => {
     }
   }, [currentUser, id, onPageMinimumLimit]);
 
-  if (!currentUser) return <div>Loading user....</div>;
+  if (!currentUser) return <LoadingPage />;
 
   return (
     <div className="user-page">

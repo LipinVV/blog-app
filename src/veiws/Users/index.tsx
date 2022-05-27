@@ -6,6 +6,7 @@ import { fetchUsers } from '../../reducers/usersSlice';
 import { Pagination } from '../../components/Pagination';
 import { getUsers, getLoading } from '../../selectors';
 import { appConsts } from '../../consts';
+import { LoadingPage } from '../../components/LoadingPage';
 import './users.scss';
 
 export const Users: FC = () => {
@@ -30,7 +31,7 @@ export const Users: FC = () => {
     setCurrentPage((prevState) => prevState - 1);
   };
 
-  if (loading) return <div>Loading users</div>;
+  if (loading) return <LoadingPage />;
 
   return (
     <div className="users">

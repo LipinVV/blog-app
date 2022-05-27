@@ -85,18 +85,21 @@ export const usersSlice = createSlice({
       })
       .addCase(fetchPostComments.fulfilled, (state, action) => {
         state.comments = action.payload;
+        state.isLoading = false;
       })
       .addCase(fetchUserPosts.pending, (state) => {
         state.isLoading = true;
       })
       .addCase(fetchUserPosts.fulfilled, (state, action) => {
         state.posts = action.payload;
+        state.isLoading = false;
       })
       .addCase(postUserComment.pending, (state) => {
         state.isLoading = true;
       })
       .addCase(postUserComment.fulfilled, (state, action) => {
         state.comments.push(action.payload);
+        state.isLoading = false;
       });
   },
 });
