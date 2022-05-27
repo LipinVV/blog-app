@@ -4,7 +4,7 @@
   display: grid;
   grid-gap: 10px;
   position: relative;
-  font-size: 17px;
+  font-size: $average-font-size;
   padding-bottom: 20px;
 }
 
@@ -21,7 +21,7 @@
   min-width: 300px;
   grid-template-columns: 1fr 3fr;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  font-size: 15px;
+  font-size: $normal-font-size;
 
   &:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
@@ -44,17 +44,17 @@
   color: $orange;
 
   @media screen and (min-width: $mobileDevice) {
-    font-weight: 500;
-    font-size: 12px;
+    font-weight: $font-weight-small;
+    font-size: $text-font-size;
   }
 
   @media screen and (min-width: $tabletDevice) {
-    font-weight: 600;
-    font-size: 15px;
+    font-weight: $font-weight-normal;
+    font-size: $normal-font-size;
   }
 
   @media screen and (min-width: $desktopDevice) {
-    font-weight: 700;
+    font-weight: $font-weight-large;
     font-size: unset;
   }
 }
@@ -84,7 +84,7 @@
 
 .comments__form-header {
   text-align: center;
-  font-size: 17px;
+  font-size: $average-font-size;
   margin: 15px 0;
   color: $green;
 }
@@ -102,7 +102,7 @@
   background-color: $black;
   border: none;
   color: $white;
-  font-weight: 700;
+  font-weight: $font-weight-large;
   margin-top: 20px;
 
   &:disabled {
@@ -124,7 +124,7 @@
   display: grid;
   justify-self: center;
   padding: 10px 15px;
-  font-size: 15px;
+  font-size: $normal-font-size;
   cursor: pointer;
   background-color: $black;
   color: $white;
@@ -136,9 +136,9 @@
 }
 
 .comments__form-error {
-  font-size: 12px;
+  font-size: $text-font-size;
   color: $red;
-  font-weight: 600;
+  font-weight: $font-weight-normal;
   grid-row: 5;
   grid-column: 1 / -1;
   position: absolute;

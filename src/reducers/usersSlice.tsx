@@ -77,8 +77,8 @@ export const usersSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(fetchUsers.fulfilled, (state, action) => {
-        state.isLoading = false;
         state.users = action.payload;
+        state.isLoading = false;
       })
       .addCase(fetchPostComments.pending, (state) => {
         state.isLoading = true;

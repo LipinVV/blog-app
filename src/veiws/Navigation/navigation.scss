@@ -22,24 +22,24 @@
   text-transform: uppercase;
   text-decoration: none;
   color: $white;
-  font-size: 28px;
-  font-weight: 700;
+  font-size: $huge-font-size;
+  font-weight: $font-weight-large;
 
   @media screen and (min-width: $mobileDevice) {
     max-width: $mobileDevice;
-    font-size: 14px;
-    font-weight: 600;
+    font-size: $normal-font-size;
+    font-weight: $font-weight-normal;
     padding: 12px 0;
   }
 
   @media screen and (min-width: $tabletDevice) {
     max-width: $tabletDevice;
-    font-size: 21px;
+    font-size: $big-font-size;
   }
 
   @media screen and (min-width: $desktopDevice) {
     max-width: $desktopDevice;
-    font-size: 28px;
+    font-size: $huge-font-size;
     padding: 17px 0;
   }
 

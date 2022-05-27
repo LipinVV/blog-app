@@ -52,14 +52,14 @@
   @media screen and (min-width: $mobileDevice) {
     height: 20px;
     width: 100px;
-    font-size: 12px;
-    font-weight: 600;
+    font-size: $text-font-size;
+    font-weight: $font-weight-normal;
   }
 
   @media screen and (min-width: $tabletDevice) {
     width: 120px;
     height: 22px;
-    font-size: 14px;
+    font-size: $normal-font-size;
     padding: 12px 15px;
   }
 }

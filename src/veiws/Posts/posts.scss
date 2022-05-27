@@ -23,19 +23,19 @@
 
 .posts__header {
   grid-column: 1/-1;
-  font-weight: 500;
+  font-weight: $font-weight-small;
 
   @media screen and (min-width: $mobileDevice) {
     margin: 10px 0 0 0;
-    font-size: 17px;
+    font-size: $average-font-size;
   }
 
   @media screen and (min-width: $tabletDevice) {
-    font-size: 25px;
+    font-size: $large-font-size;
   }
 
   @media screen and (min-width: $desktopDevice) {
-    font-size: 35px;
+    font-size: $desktop-headers-font-size;
     margin: 15px 0 0 0;
   }
 }
@@ -50,7 +50,7 @@
   cursor: pointer;
   border: none;
   border-radius: 10px;
-  font-weight: 600;
+  font-weight: $font-weight-normal;
 
   &:hover {
     background-color: $green;
@@ -61,13 +61,13 @@
     min-width: 100px;
     padding: 5px 12px;
     margin: 0 auto 10px;
-    font-size: 12px;
+    font-size: $text-font-size;
   }
 
   @media screen and (min-width: $desktopDevice) {
     min-width: 150px;
     padding: 10px 20px;
-    font-size: 12px;
+    font-size: $text-font-size;
     margin: 0 auto 50px;
   }
 }

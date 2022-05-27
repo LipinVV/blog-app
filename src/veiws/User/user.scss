@@ -50,7 +50,7 @@
   }
 
   @media screen and (min-width: $tabletDevice) {
-    font-size: 12px;
+    font-size: $text-font-size;
   }
 
   @media screen and (min-width: $desktopDevice) {
@@ -63,18 +63,18 @@
 }
 
 .user__personal-information-name {
-  font-weight: 500;
+  font-weight: $font-weight-small;
   @media screen and (min-width: $mobileDevice) {
-    font-size: 17px;
+    font-size: $average-font-size;
     padding-left: 10px;
   }
 
   @media screen and (min-width: $tabletDevice) {
-    font-size: 25px;
+    font-size: $large-font-size;
   }
 
   @media screen and (min-width: $desktopDevice) {
-    font-size: 35px;
+    font-size: $desktop-headers-font-size;
     line-height: 40px;
     padding: 11px 0 11px 18px;
   }

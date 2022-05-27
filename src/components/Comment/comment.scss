@@ -5,14 +5,14 @@
   border: 1px solid #000000;
   flex-direction: column;
   padding: 10px;
-  font-size: 15px;
+  font-size: $normal-font-size;
 
   @media screen and (min-width: $mobileDevice) {
-    font-size: 10px;
+    font-size: $minimum-font-size;
   }
 
   @media screen and (min-width: $tabletDevice) {
-    font-size: 12px;
+    font-size: $text-font-size;
   }
 
   @media screen and (min-width: $desktopDevice) {

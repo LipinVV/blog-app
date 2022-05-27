@@ -12,8 +12,8 @@
 .no-match-page__link {
   text-decoration: none;
   color: $black;
-  font-size: 17px;
-  font-weight: 600;
+  font-size: $average-font-size;
+  font-weight: $font-weight-normal;
   padding: 10px;
   border: 2px solid $black;
   border-radius: 10px;

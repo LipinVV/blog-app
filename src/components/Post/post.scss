@@ -6,7 +6,7 @@
   grid-template-rows: repeat(4, 0.1fr);
   @media screen and (min-width: $mobileDevice) {
     grid-gap: 10px;
-    font-size: 12px;
+    font-size: $text-font-size;
   }
 
   @media screen and (min-width: $desktopDevice) {
@@ -24,8 +24,8 @@
   }
 
   @media screen and (min-width: $mobileDevice) {
-    font-size: 12px;
-    font-weight: 500;
+    font-size: $text-font-size;
+    font-weight: $font-weight-small;
     margin: 5px 0;
     padding-left: 7px;
     min-height: 40px;
@@ -33,8 +33,8 @@
 
   @media screen and (min-width: $desktopDevice) {
     min-height: 74px;
-    font-size: 17px;
-    font-weight: 700;
+    font-size: $average-font-size;
+    font-weight: $font-weight-large;
   }
 }
 
@@ -52,7 +52,7 @@
   }
 
   @media screen and (min-width: $mobileDevice) {
-    font-size: 10px;
+    font-size: $minimum-font-size;
     transform: translateY(-15px);
     border: none;
     max-height: 25px;
@@ -62,8 +62,8 @@
   @media screen and (min-width: $desktopDevice) {
     padding: 10px 20px;
     border: none;
-    font-size: 12px;
-    font-weight: 600;
+    font-size: $text-font-size;
+    font-weight: $font-weight-normal;
     transform: translateY(-30px);
     max-height: 40px;
   }
@@ -93,7 +93,7 @@
 
   @media screen and (min-width: $mobileDevice) {
     max-width: 80px;
-    font-size: 10px;
+    font-size: $minimum-font-size;
     padding: 7px 10px;
     margin-bottom: 7px;
   }
@@ -104,7 +104,7 @@
 
   @media screen and (min-width: $desktopDevice) {
     max-width: 120px;
-    font-size: 15px;
+    font-size: $normal-font-size;
     max-height: 50px;
     margin-bottom: 20px;
   }
